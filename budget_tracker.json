@@ -1,0 +1,217 @@
+{
+  "trip": "隠岐島ファミリー旅行 2026 GW",
+  "period": "2026-05-03 ~ 2026-05-09",
+  "family": {
+    "adults": 2,
+    "children": [
+      { "age": 7, "fare_class": "小学生(半額)" },
+      { "age": 3, "fare_class": "幼児(無料)" }
+    ]
+  },
+  "currency": "JPY",
+  "categories": {
+    "ferry": {
+      "label": "フェリー代",
+      "items": [
+        {
+          "name": "車両運賃(往路・7m未満)",
+          "amount": 35530,
+          "note": "運転者1名の2等運賃含む",
+          "status": "confirmed"
+        },
+        {
+          "name": "車両運賃(復路・7m未満)",
+          "amount": 35530,
+          "note": "運転者1名の2等運賃含む",
+          "status": "confirmed"
+        },
+        {
+          "name": "大人追加乗船券(往路)",
+          "amount": 3510,
+          "note": "同伴大人1名分",
+          "status": "confirmed"
+        },
+        {
+          "name": "大人追加乗船券(復路)",
+          "amount": 3510,
+          "note": "同伴大人1名分",
+          "status": "confirmed"
+        },
+        {
+          "name": "小学生乗船券(往路)",
+          "amount": 1760,
+          "note": "7歳",
+          "status": "confirmed"
+        },
+        {
+          "name": "小学生乗船券(復路)",
+          "amount": 1760,
+          "note": "7歳",
+          "status": "confirmed"
+        },
+        {
+          "name": "幼児(3歳)",
+          "amount": 0,
+          "note": "大人の膝上で無料",
+          "status": "confirmed"
+        }
+      ],
+      "subtotal": 81600,
+      "tip": "隠岐フリー航送車輌運賃(約23%割引)が使えるか要確認"
+    },
+    "toll_gas": {
+      "label": "高速道路 & ガソリン代",
+      "items": [
+        {
+          "name": "高速料金(大阪→七類 片道)",
+          "amount": 6500,
+          "note": "ETC割引適用想定",
+          "status": "estimate"
+        },
+        {
+          "name": "高速料金(七類→大阪 片道)",
+          "amount": 6500,
+          "note": "ETC割引適用想定",
+          "status": "estimate"
+        },
+        {
+          "name": "ガソリン代(本土走行分)",
+          "amount": 10000,
+          "note": "往復約600km",
+          "status": "estimate"
+        },
+        {
+          "name": "ガソリン代(島内走行分)",
+          "amount": 5000,
+          "note": "島内は約150km想定・離島価格",
+          "status": "estimate"
+        }
+      ],
+      "subtotal": 28000
+    },
+    "accommodation": {
+      "label": "宿泊(キャンプ場)",
+      "items": [
+        {
+          "name": "ジオリゾートシンフォニー(4泊)",
+          "amount": 12000,
+          "note": "3,000円/泊 x 4泊(4名まで)",
+          "status": "estimate"
+        },
+        {
+          "name": "七類港 車中泊(前泊)",
+          "amount": 0,
+          "note": "無料駐車場",
+          "status": "confirmed"
+        }
+      ],
+      "subtotal": 12000
+    },
+    "food": {
+      "label": "食費",
+      "items": [
+        {
+          "name": "自炊(朝食・一部夕食)",
+          "amount": 15000,
+          "note": "5日分 x 3,000円/日目安",
+          "status": "estimate"
+        },
+        {
+          "name": "外食: 隠岐プラザホテル緋翠(5/5夕)",
+          "amount": 12000,
+          "note": "岩ガキ+お子様セット等",
+          "status": "estimate"
+        },
+        {
+          "name": "外食: 末広(5/7夕)",
+          "amount": 18000,
+          "note": "隠岐牛ステーキコース",
+          "status": "estimate"
+        },
+        {
+          "name": "外食: ランチ各日",
+          "amount": 15000,
+          "note": "5日 x 3,000円目安",
+          "status": "estimate"
+        },
+        {
+          "name": "SA休憩・軽食(往復)",
+          "amount": 4000,
+          "note": "サービスエリア等",
+          "status": "estimate"
+        }
+      ],
+      "subtotal": 64000
+    },
+    "activities": {
+      "label": "アクティビティ費",
+      "items": [
+        {
+          "name": "西郷港釣り体験(大人2+子供1)",
+          "amount": 9000,
+          "note": "3,000円 x 3名(3歳児は見学)",
+          "status": "estimate"
+        },
+        {
+          "name": "ローソク島遊覧(大人2+子供1)",
+          "amount": 7500,
+          "note": "大人3,000円 x 2 + 子供1,500円",
+          "status": "estimate"
+        },
+        {
+          "name": "隠岐自然館(大人2+子供1)",
+          "amount": 1250,
+          "note": "大人500円 x 2 + 子供250円",
+          "status": "estimate"
+        },
+        {
+          "name": "五箇創生館(大人2+子供1)",
+          "amount": 1200,
+          "note": "大人500円 x 2 + 子供200円",
+          "status": "estimate"
+        },
+        {
+          "name": "乳房杉タクシー(往復)",
+          "amount": 8000,
+          "note": "約1.5時間チャーター",
+          "status": "estimate"
+        },
+        {
+          "name": "温泉・入浴(5日分)",
+          "amount": 5000,
+          "note": "五箇温泉GOKA等",
+          "status": "estimate"
+        }
+      ],
+      "subtotal": 31950
+    },
+    "shopping": {
+      "label": "お土産・雑費",
+      "items": [
+        {
+          "name": "お土産",
+          "amount": 10000,
+          "note": "藻塩、さざえカレー、島のり等",
+          "status": "estimate"
+        },
+        {
+          "name": "雑費・予備費",
+          "amount": 10000,
+          "note": "急な出費に備える",
+          "status": "estimate"
+        }
+      ],
+      "subtotal": 20000
+    }
+  },
+  "summary": {
+    "ferry": 81600,
+    "toll_gas": 28000,
+    "accommodation": 12000,
+    "food": 64000,
+    "activities": 31950,
+    "shopping": 20000,
+    "grand_total": 237550,
+    "note": "フリー航送運賃適用で約18,000円節約の可能性あり"
+  }
+}
