@@ -4,1168 +4,468 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>隠岐島ファミリー旅行 2026 GW</title>
+<title>隠岐島旅行プランナー 2026 GW</title>
 <style>
-:root {
-  --primary: #1a6b5a;
-  --primary-light: #e8f5f1;
-  --accent: #e8853d;
-  --danger: #d9534f;
-  --bg: #f5f5f0;
-  --card: #ffffff;
-  --text: #2c2c2c;
-  --text-light: #6b6b6b;
-  --border: #e0ddd8;
-  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+:root{
+  --pri:#1a6b5a;--pri-l:#e8f5f1;--acc:#e8853d;--acc-l:#fff3e0;
+  --bg:#f5f5f0;--card:#fff;--txt:#2c2c2c;--txt2:#6b6b6b;--bdr:#e0ddd8;
+  --red:#d9534f;--red-l:#ffebee;--blue:#1565c0;--blue-l:#e3f2fd;
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  padding-bottom: 80px;
-  overflow-x: hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans',Meiryo,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5;padding-bottom:70px;overflow-x:hidden}
+a{color:var(--pri);text-decoration:none;font-weight:600}
 
 /* Header */
-.header {
-  background: linear-gradient(135deg, #1a6b5a 0%, #2a8f7a 100%);
-  color: white;
-  padding: 20px 16px 16px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-}
-.header h1 { font-size: 18px; font-weight: 700; }
-.header .subtitle { font-size: 12px; opacity: 0.85; margin-top: 2px; }
-.header .dates {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  margin-top: 8px;
-}
+.hdr{background:linear-gradient(135deg,#1a6b5a,#2a8f7a);color:#fff;padding:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.hdr h1{font-size:17px}.hdr small{font-size:11px;opacity:.8}
 
-/* Tab Navigation */
-.tab-nav {
-  display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: white;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 82px;
-  z-index: 99;
-  scrollbar-width: none;
-}
-.tab-nav::-webkit-scrollbar { display: none; }
-.tab-btn {
-  flex: 0 0 auto;
-  padding: 12px 16px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-light);
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.tab-btn.active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
-}
+/* Bottom Nav */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--bdr);display:flex;z-index:100;padding:4px 0 env(safe-area-inset-bottom,6px)}
+.bnav button{flex:1;background:none;border:none;padding:4px 0;font-size:10px;color:var(--txt2);display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer}
+.bnav button .ic{font-size:20px}
+.bnav button.on{color:var(--pri)}
 
-/* Tab Content */
-.tab-content { display: none; padding: 12px; }
-.tab-content.active { display: block; }
+/* Tabs */
+.tab{display:none;padding:10px}.tab.on{display:block}
 
 /* Cards */
-.card {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow);
-}
-.card-title {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.card-title .icon { font-size: 18px; }
+.card{background:var(--card);border-radius:12px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.card h3{font-size:14px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
 
-/* Day Sections */
-.day-header {
-  background: linear-gradient(135deg, var(--primary) 0%, #2a8f7a 100%);
-  color: white;
-  padding: 12px 16px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-.day-header h2 { font-size: 16px; font-weight: 700; }
-.day-header .day-date { font-size: 12px; opacity: 0.85; }
-.day-header .toggle { font-size: 20px; transition: transform 0.3s; }
-.day-header.collapsed .toggle { transform: rotate(-90deg); }
-.day-body { overflow: hidden; transition: max-height 0.3s ease; }
-.day-body.collapsed { max-height: 0 !important; padding: 0; }
+/* Spot Card */
+.spot{background:var(--card);border-radius:10px;padding:12px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid var(--pri);position:relative;cursor:pointer;transition:transform .1s}
+.spot:active{transform:scale(.98)}
+.spot .sname{font-size:14px;font-weight:700}
+.spot .sdesc{font-size:12px;color:var(--txt2);margin:3px 0}
+.spot .stags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.tag{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:600}
+.t-ok{background:#e8f5e9;color:#2e7d32}.t-warn{background:var(--acc-l);color:#e65100}
+.t-ng{background:var(--red-l);color:#c62828}.t-info{background:var(--blue-l);color:var(--blue)}
+.t-free{background:#f3e5f5;color:#7b1fa2}.t-pay{background:#fff8e1;color:#f57f17}
 
-/* Timeline */
-.timeline { position: relative; padding-left: 24px; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  bottom: 8px;
-  width: 2px;
-  background: var(--border);
-}
-.timeline-item {
-  position: relative;
-  padding: 8px 0 16px;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -20px;
-  top: 14px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--primary);
-  border: 2px solid white;
-  box-shadow: 0 0 0 2px var(--primary);
-}
-.timeline-item.highlight::before {
-  background: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent);
-}
-.timeline-time {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--primary);
-}
-.timeline-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 2px 0;
-}
-.timeline-desc {
-  font-size: 12px;
-  color: var(--text-light);
-}
-.timeline-item.highlight .timeline-title {
-  color: var(--accent);
-}
+/* Category Filter */
+.cats{display:flex;overflow-x:auto;gap:6px;padding:8px 0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cbtn{flex:0 0 auto;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:2px solid var(--bdr);background:#fff;color:var(--txt2);cursor:pointer;white-space:nowrap;transition:all .2s}
+.cbtn.on{background:var(--pri);color:#fff;border-color:var(--pri)}
 
-/* Checklist */
-.checklist-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  gap: 10px;
-}
-.checklist-item:last-child { border-bottom: none; }
-.checklist-item input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  margin-top: 2px;
-  flex-shrink: 0;
-  accent-color: var(--primary);
-}
-.checklist-item.checked .check-label {
-  text-decoration: line-through;
-  color: var(--text-light);
-}
-.check-label { font-size: 14px; flex: 1; }
-.check-sub { font-size: 11px; color: var(--text-light); }
+/* Day Planner */
+.day-tab{display:flex;overflow-x:auto;gap:4px;padding:6px 0;scrollbar-width:none}
+.day-tab::-webkit-scrollbar{display:none}
+.dbtn{flex:0 0 auto;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:700;border:none;background:#fff;color:var(--txt2);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.dbtn.on{background:var(--pri);color:#fff}
+.dbtn .dsub{font-size:9px;opacity:.7;display:block}
 
-/* Budget */
-.budget-category {
-  margin-bottom: 16px;
-}
-.budget-category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  font-weight: 600;
-  font-size: 14px;
-  border-bottom: 2px solid var(--primary);
-}
-.budget-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  font-size: 13px;
-  border-bottom: 1px solid #f0f0f0;
-}
-.budget-amount { font-weight: 600; white-space: nowrap; }
-.budget-total {
-  background: var(--primary);
-  color: white;
-  padding: 14px 16px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 12px;
-}
+/* Plan Item */
+.pitem{background:var(--card);border-radius:10px;padding:10px 12px;margin-bottom:6px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;align-items:center;gap:10px}
+.pitem .pnum{width:24px;height:24px;border-radius:50%;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.pitem .pname{font-size:13px;font-weight:600;flex:1}
+.pitem .pdel{width:28px;height:28px;border-radius:50%;background:var(--red-l);color:var(--red);border:none;font-size:16px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.pitem .pmove{display:flex;flex-direction:column;gap:2px;flex-shrink:0}
+.pitem .pmove button{width:24px;height:20px;border:1px solid var(--bdr);border-radius:4px;background:#fff;font-size:10px;cursor:pointer}
+
+.empty-msg{text-align:center;padding:30px 10px;color:var(--txt2);font-size:13px}
+
+/* Modal */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:flex-end;justify-content:center}
+.modal-bg.show{display:flex}
+.modal{background:#fff;border-radius:16px 16px 0 0;width:100%;max-width:480px;max-height:70vh;overflow-y:auto;padding:20px 16px env(safe-area-inset-bottom,16px)}
+.modal h3{font-size:16px;margin-bottom:12px}
+.modal .mbtn{width:100%;padding:12px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:6px}
+.modal .mbtn-pri{background:var(--pri);color:#fff}
+.modal .mbtn-sec{background:var(--bg);color:var(--txt)}
 
 /* Info Table */
-.info-table { width: 100%; font-size: 13px; }
-.info-table tr { border-bottom: 1px solid var(--border); }
-.info-table td { padding: 8px 4px; vertical-align: top; }
-.info-table td:first-child {
-  font-weight: 600;
-  white-space: nowrap;
-  width: 35%;
-  color: var(--primary);
-}
+.itable{width:100%;font-size:13px;border-collapse:collapse}
+.itable td{padding:6px 4px;border-bottom:1px solid var(--bdr);vertical-align:top}
+.itable td:first-child{font-weight:600;color:var(--pri);white-space:nowrap;width:35%}
 
-/* Tags */
-.tag {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 600;
-}
-.tag-ok { background: #e8f5e9; color: #2e7d32; }
-.tag-warn { background: #fff3e0; color: #e65100; }
-.tag-ng { background: #ffebee; color: #c62828; }
-.tag-must { background: #e3f2fd; color: #1565c0; }
+/* Checklist */
+.chk{display:flex;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--bdr);gap:8px}
+.chk:last-child{border:none}
+.chk input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--pri)}
+.chk label{font-size:13px;flex:1}
+.chk.done label{text-decoration:line-through;color:var(--txt2)}
 
-/* Reservation Status */
-.reservation-list .res-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-.res-status {
-  padding: 3px 10px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 700;
-}
-.res-done { background: #e8f5e9; color: #2e7d32; }
-.res-todo { background: #ffebee; color: #c62828; }
+/* Fixed Schedule */
+.fixed{background:var(--pri-l);border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:13px;border-left:4px solid var(--pri)}
+.fixed b{color:var(--pri)}
 
-/* Phone link */
-a.phone-link {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-}
+/* Counter badge */
+.badge{background:var(--acc);color:#fff;border-radius:10px;padding:0 6px;font-size:10px;font-weight:700;margin-left:4px}
 
-/* Fish table */
-.fish-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.fish-card {
-  background: var(--primary-light);
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-}
-.fish-card .fish-name { font-size: 16px; font-weight: 700; }
-.fish-card .fish-sub { font-size: 11px; color: var(--text-light); }
-.fish-card.best { border: 2px solid var(--accent); }
-
-/* Restaurant Cards */
-.resto-card {
-  background: var(--card);
-  border-radius: 10px;
-  padding: 14px;
-  margin-bottom: 10px;
-  border-left: 4px solid var(--primary);
-  box-shadow: var(--shadow);
-}
-.resto-name { font-size: 15px; font-weight: 700; }
-.resto-info { font-size: 12px; color: var(--text-light); margin-top: 4px; }
-.resto-tags { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
-
-/* Emergency Banner */
-.emergency-banner {
-  background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
-  color: white;
-  padding: 14px 16px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-.emergency-banner h3 { font-size: 14px; margin-bottom: 8px; }
-.emergency-banner a { color: white; text-decoration: underline; font-weight: 700; font-size: 16px; }
-
-/* Progress bar */
-.progress-bar {
-  background: #e0e0e0;
-  border-radius: 8px;
-  height: 8px;
-  overflow: hidden;
-  margin: 8px 0;
-}
-.progress-fill {
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  height: 100%;
-  border-radius: 8px;
-  transition: width 0.5s ease;
-}
-
-/* Bottom nav */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-around;
-  padding: 6px 0 env(safe-area-inset-bottom, 8px);
-  z-index: 100;
-}
-.bottom-nav button {
-  background: none;
-  border: none;
-  padding: 4px 12px;
-  font-size: 10px;
-  color: var(--text-light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  cursor: pointer;
-}
-.bottom-nav button .nav-icon { font-size: 20px; }
-.bottom-nav button.active { color: var(--primary); }
-
-/* Weather widget */
-.weather-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  text-align: center;
-}
-.weather-item {
-  background: var(--primary-light);
-  padding: 10px 6px;
-  border-radius: 8px;
-}
-.weather-item .val { font-size: 18px; font-weight: 700; color: var(--primary); }
-.weather-item .label { font-size: 10px; color: var(--text-light); }
-
-/* Road status */
-.road-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-
-@media (min-width: 768px) {
-  body { max-width: 480px; margin: 0 auto; }
-}
+@media(min-width:768px){body{max-width:480px;margin:0 auto}}
 </style>
 </head>
 <body>
 
-<!-- Header -->
-<div class="header">
-  <h1>隠岐島ファミリー旅行</h1>
-  <div class="subtitle">大阪 → キャンピングカーで隠岐諸島へ</div>
-  <div class="dates">2026年5月3日(日)〜5月9日(土)</div>
+<div class="hdr">
+  <h1>隠岐島旅行プランナー</h1>
+  <small>2026年5月4日(月)〜5月9日(土) / 大人2+子供2(7歳・3歳) / キャンピングカー</small>
 </div>
 
-<!-- Tab Navigation -->
-<div class="tab-nav" id="tabNav">
-  <button class="tab-btn active" data-tab="itinerary">行程表</button>
-  <button class="tab-btn" data-tab="reservations">予約管理</button>
-  <button class="tab-btn" data-tab="budget">予算</button>
-  <button class="tab-btn" data-tab="camping">車両</button>
-  <button class="tab-btn" data-tab="fishing">釣り</button>
-  <button class="tab-btn" data-tab="food">グルメ</button>
-  <button class="tab-btn" data-tab="backup">緊急/備え</button>
+<!-- ==================== SPOTS TAB ==================== -->
+<div class="tab on" id="t-spots">
+  <div class="cats" id="catFilter"></div>
+  <div id="spotList"></div>
 </div>
 
-<!-- ======================== ITINERARY TAB ======================== -->
-<div class="tab-content active" id="tab-itinerary">
-
-  <!-- Day 0 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>前日</h2><div class="day-date">5/3(日) 大阪 → 七類港</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">18:00</div>
-            <div class="timeline-title">大阪出発</div>
-            <div class="timeline-desc">中国道 → 落合JCT → 米子道(約4時間)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">19:30</div>
-            <div class="timeline-title">SA休憩・夕食</div>
-            <div class="timeline-desc">蒜山高原SA等で軽食</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">22:00</div>
-            <div class="timeline-title">七類港 到着</div>
-            <div class="timeline-desc">無料駐車場(約600台)で車中泊</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Day 1 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>Day 1</h2><div class="day-date">5/4(月・祝) 渡島 & 牛突き大会</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">08:00</div>
-            <div class="timeline-title">七類港チェックイン</div>
-            <div class="timeline-desc">車両は出港1時間前集合必須</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">09:00</div>
-            <div class="timeline-title">フェリー出港</div>
-            <div class="timeline-desc">七類港 → 西郷港(約2h25m)</div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">11:25</div>
-            <div class="timeline-title">西郷港 到着!</div>
-            <div class="timeline-desc">観光案内所でドライブマップ入手 → 給油</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">12:00</div>
-            <div class="timeline-title">昼食</div>
-            <div class="timeline-desc">フィッシャーマンズ・ワーフ隠岐(港近く)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">13:00</div>
-            <div class="timeline-title">キャンプ場へ移動・設営</div>
-            <div class="timeline-desc">ジオリゾートシンフォニー(約30分)</div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">14:00</div>
-            <div class="timeline-title">しゃくなげ祭り 牛突き大会</div>
-            <div class="timeline-desc">姿沢牛突き場(年数回の貴重なイベント!)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">17:00</div>
-            <div class="timeline-title">キャンプ場でのんびり</div>
-            <div class="timeline-desc">子供の自由遊び → BBQ夕食 → 温泉</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Day 2 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>Day 2</h2><div class="day-date">5/5(火・祝) 歴史 & 滝めぐり</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">09:00</div>
-            <div class="timeline-title">玉若酢命神社</div>
-            <div class="timeline-desc">樹齢2000年の八百杉(駐車場あり・アクセス良好)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">10:30</div>
-            <div class="timeline-title">かぶら杉 → 壇鏡の滝</div>
-            <div class="timeline-desc">最終区間やや狭い。P10台。徒歩5分</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">12:00</div>
-            <div class="timeline-title">昼食: 五箇創生館カフェ</div>
-            <div class="timeline-desc">隠岐そば + 牛突き展示を見学</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">13:00</div>
-            <div class="timeline-title">3歳児お昼寝</div>
-            <div class="timeline-desc">キャンピングカーで休憩</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">15:00</div>
-            <div class="timeline-title">中村海水浴場で海遊び</div>
-            <div class="timeline-desc">ビーチ隣接のキャンプ場あり</div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">17:30</div>
-            <div class="timeline-title">夕食: 隠岐プラザホテル 緋翠</div>
-            <div class="timeline-desc">岩ガキ + お子様セットあり(要予約)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Day 3 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>Day 3</h2><div class="day-date">5/6(水・祝) 釣り & 浄土ヶ浦</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item highlight">
-            <div class="timeline-time">08:40</div>
-            <div class="timeline-title">西郷港岸壁釣り体験</div>
-            <div class="timeline-desc">ガイド付き90分。竿・餌込み(要予約)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">10:30</div>
-            <div class="timeline-title">ひまりスーパーで買い物</div>
-            <div class="timeline-desc">食材補充</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">13:00</div>
-            <div class="timeline-title">3歳児お昼寝</div>
-            <div class="timeline-desc">浄土ヶ浦駐車場にて</div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">14:30</div>
-            <div class="timeline-title">浄土ヶ浦海岸散策</div>
-            <div class="timeline-desc">奇岩・洞窟探検(7歳児向き)。トイレあり</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">18:00</div>
-            <div class="timeline-title">夕食: 釣った魚で島メシ!</div>
-            <div class="timeline-desc">キャンプ場で自炊</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Day 4 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>Day 4</h2><div class="day-date">5/7(木) 乳房杉 & ローソク島</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">09:00</div>
-            <div class="timeline-title">隠岐自然館(西郷港2F)</div>
-            <div class="timeline-desc">オキサンショウウオ展示(子供向き)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">10:00</div>
-            <div class="timeline-title">乳房杉(タクシーで)</div>
-            <div class="timeline-desc">キャンピングカーNG。タクシー往復約1.5h</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">14:30</div>
-            <div class="timeline-title">海洋スポーツセンター</div>
-            <div class="timeline-desc">カヤック or SUP体験(7歳〜)</div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">17:00頃</div>
-            <div class="timeline-title">ローソク島遊覧船</div>
-            <div class="timeline-desc">福浦港発。約50分。夕日の絶景!(要予約)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">19:00</div>
-            <div class="timeline-title">夕食: 末広</div>
-            <div class="timeline-desc">隠岐牛ステーキコース(要予約)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Day 5 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>Day 5</h2><div class="day-date">5/8(金) のんびり最終日</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">08:30</div>
-            <div class="timeline-title">キャンプ場撤収</div>
-            <div class="timeline-desc">ゴミ処理・忘れ物チェック</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">09:30</div>
-            <div class="timeline-title">お土産購入</div>
-            <div class="timeline-desc">藻塩・さざえカレー・島のり等</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">10:00</div>
-            <div class="timeline-title">予備アクティビティ</div>
-            <div class="timeline-desc">ローソク島欠航時の振替 or 自由散策</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">11:30</div>
-            <div class="timeline-title">最後の昼食</div>
-            <div class="timeline-desc">フィッシャーマンズ・ワーフ</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">16:00</div>
-            <div class="timeline-title">給油</div>
-            <div class="timeline-desc">翌日フェリー乗船前の最終給油</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">18:30</div>
-            <div class="timeline-title">西郷港近くで車中泊</div>
-            <div class="timeline-desc">翌朝の乗船に備える</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Day 6 -->
-  <div class="day-section">
-    <div class="day-header" onclick="toggleDay(this)">
-      <div><h2>Day 6</h2><div class="day-date">5/9(土) 帰路</div></div>
-      <span class="toggle">&#9660;</span>
-    </div>
-    <div class="day-body">
-      <div class="card">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-time">10:00</div>
-            <div class="timeline-title">最後の散策 & お土産</div>
-            <div class="timeline-desc">港プラザのお土産コーナー</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">14:00</div>
-            <div class="timeline-title">西郷港チェックイン</div>
-            <div class="timeline-desc">出港1時間前</div>
-          </div>
-          <div class="timeline-item highlight">
-            <div class="timeline-time">15:10</div>
-            <div class="timeline-title">フェリー出港</div>
-            <div class="timeline-desc">西郷港 → 七類港(約2h25m)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">17:35</div>
-            <div class="timeline-title">七類港 到着</div>
-            <div class="timeline-desc">米子道 → 中国道 → 大阪(約4h)</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-time">22:00</div>
-            <div class="timeline-title">大阪 帰着(目安)</div>
-            <div class="timeline-desc">お疲れ様でした!</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ==================== PLAN TAB ==================== -->
+<div class="tab" id="t-plan">
+  <div class="day-tab" id="dayTabs"></div>
+  <div id="planContent"></div>
 </div>
 
-<!-- ======================== RESERVATIONS TAB ======================== -->
-<div class="tab-content" id="tab-reservations">
+<!-- ==================== CHECKLIST TAB ==================== -->
+<div class="tab" id="t-check">
   <div class="card">
-    <div class="card-title"><span class="icon">&#128203;</span> 予約管理</div>
-    <div class="reservation-list" id="reservationList"></div>
+    <h3>&#9745; 予約リスト</h3>
+    <div id="resChecklist"></div>
   </div>
   <div class="card">
-    <div class="card-title"><span class="icon">&#128222;</span> 連絡先一覧</div>
-    <table class="info-table">
-      <tr><td>隠岐汽船(フェリー)</td><td><a href="tel:0851221122" class="phone-link">08512-2-1122</a></td></tr>
-      <tr><td>隠岐観光協会</td><td><a href="tel:0851220787" class="phone-link">08512-2-0787</a></td></tr>
-      <tr><td>隠岐旅行社(釣り)</td><td><a href="tel:0851227100" class="phone-link">08512-2-7100</a></td></tr>
-      <tr><td>五箇支所(牛突き)</td><td><a href="tel:0851252211" class="phone-link">08512-5-2211</a></td></tr>
-      <tr><td>隠岐一畑交通(タクシー)</td><td><a href="tel:0851220013" class="phone-link">08512-2-0013</a></td></tr>
-      <tr><td>隠岐プラザホテル</td><td><a href="tel:0851220111" class="phone-link">08512-2-0111</a></td></tr>
+    <h3>&#128092; 持ち物</h3>
+    <div id="packChecklist"></div>
+  </div>
+</div>
+
+<!-- ==================== INFO TAB ==================== -->
+<div class="tab" id="t-info">
+  <div class="card" style="background:linear-gradient(135deg,var(--red),#c9302c);color:#fff">
+    <h3 style="color:#fff">&#128680; 緊急連絡先</h3>
+    <table class="itable" style="color:#fff">
+      <tr><td style="color:#ffcdd2">隠岐病院(小児科)</td><td><a href="tel:0851221356" style="color:#fff">08512-2-1356</a></td></tr>
+      <tr><td style="color:#ffcdd2">警察</td><td><a href="tel:110" style="color:#fff">110</a></td></tr>
+      <tr><td style="color:#ffcdd2">海上保安庁</td><td><a href="tel:118" style="color:#fff">118</a></td></tr>
+      <tr><td style="color:#ffcdd2">JAF</td><td><a href="tel:0570008139" style="color:#fff">0570-00-8139</a></td></tr>
     </table>
   </div>
-</div>
-
-<!-- ======================== BUDGET TAB ======================== -->
-<div class="tab-content" id="tab-budget">
-  <div class="card" id="budgetContent"></div>
-</div>
-
-<!-- ======================== CAMPING TAB ======================== -->
-<div class="tab-content" id="tab-camping">
-  <!-- Road Status -->
   <div class="card">
-    <div class="card-title"><span class="icon">&#128663;</span> 道幅・通行可否</div>
-    <div class="road-item"><span>西郷港 ↔ キャンプ場</span> <span class="tag tag-ok">OK</span></div>
-    <div class="road-item"><span>西郷港 ↔ 玉若酢命神社</span> <span class="tag tag-ok">OK</span></div>
-    <div class="road-item"><span>西郷港 ↔ 浄土ヶ浦</span> <span class="tag tag-ok">OK</span></div>
-    <div class="road-item"><span>西郷港 ↔ 中村海水浴場</span> <span class="tag tag-ok">OK</span></div>
-    <div class="road-item"><span>壇鏡の滝(最終区間)</span> <span class="tag tag-warn">注意</span></div>
-    <div class="road-item"><span>かぶら杉周辺</span> <span class="tag tag-warn">注意</span></div>
-    <div class="road-item"><span>福浦港(ローソク島)</span> <span class="tag tag-warn">注意</span></div>
-    <div class="road-item"><span>乳房杉アクセス道</span> <span class="tag tag-ng">NG</span></div>
-    <div class="road-item"><span>ローソク島展望台(陸路)</span> <span class="tag tag-ng">NG</span></div>
+    <h3>&#9972; フェリー(隠岐汽船)</h3>
+    <table class="itable">
+      <tr><td>往路 5/4</td><td>七類 09:00 → 西郷 11:25</td></tr>
+      <tr><td>復路 5/9</td><td>西郷 15:10 → 七類 17:35</td></tr>
+      <tr><td>車両チェックイン</td><td><b>出港1時間前</b></td></tr>
+      <tr><td>高さ制限</td><td>3.8m以下</td></tr>
+      <tr><td>電話</td><td><a href="tel:0851221122">08512-2-1122</a></td></tr>
+    </table>
   </div>
-
-  <!-- Gas Stations -->
   <div class="card">
-    <div class="card-title"><span class="icon">&#9981;</span> ガソリンスタンド</div>
-    <table class="info-table">
+    <h3>&#9981; ガソリンスタンド</h3>
+    <table class="itable">
       <tr><td>西郷SS(出光)</td><td>平日 07:30-19:30<br>土日祝 08:30-17:30</td></tr>
       <tr><td>中村SS</td><td>06:30-19:00</td></tr>
       <tr><td>都万SS</td><td>07:30-18:30</td></tr>
     </table>
-    <div style="margin-top:8px;padding:8px;background:#fff3e0;border-radius:8px;font-size:12px;">
-      <strong>注意:</strong> 土日祝は17:30閉店あり。到着日と帰路前日に必ず給油!
-    </div>
+    <div style="margin-top:6px;padding:6px 8px;background:var(--acc-l);border-radius:6px;font-size:11px"><b>注意:</b> 土日祝は17:30閉店あり。到着日に必ず給油!</div>
   </div>
-
-  <!-- Supplies -->
   <div class="card">
-    <div class="card-title"><span class="icon">&#128722;</span> 買い物</div>
-    <table class="info-table">
+    <h3>&#128722; 買い物(日用品)</h3>
+    <table class="itable">
       <tr><td>ひまりスーパー</td><td>~21:00(島内最大)</td></tr>
       <tr><td>サンテラス</td><td>10:00-20:00(港近く)</td></tr>
     </table>
-    <div style="margin-top:8px;padding:8px;background:#ffebee;border-radius:8px;font-size:12px;">
-      <strong>重要:</strong> コンビニチェーン(セブン・ローソン等)は島内にありません
-    </div>
+    <div style="margin-top:6px;padding:6px 8px;background:var(--red-l);border-radius:6px;font-size:11px"><b>重要:</b> コンビニ(セブン等)は島内にありません</div>
   </div>
-
-  <!-- Ferry Info -->
   <div class="card">
-    <div class="card-title"><span class="icon">&#9972;</span> フェリー車両制限</div>
-    <table class="info-table">
-      <tr><td>高さ制限</td><td><strong>3.8m以下</strong></td></tr>
-      <tr><td>幅2.5m超</td><td>25cmごと15%割増</td></tr>
-      <tr><td>最低地上高</td><td><strong>15cm以上</strong></td></tr>
-      <tr><td>チェックイン</td><td><strong>出港1時間前</strong></td></tr>
-      <tr><td>必要書類</td><td>車検証</td></tr>
+    <h3>&#127782; 5月の気候</h3>
+    <table class="itable">
+      <tr><td>最高気温</td><td>21.3°C(平均)</td></tr>
+      <tr><td>最低気温</td><td>12.6°C(平均)</td></tr>
+      <tr><td>降水量</td><td>126mm/月</td></tr>
     </table>
+    <div style="margin-top:6px;font-size:11px;color:var(--txt2)">日中Tシャツ+薄手上着。朝晩はフリース必要。海風で体感低め。</div>
   </div>
-
-  <!-- Checklist -->
   <div class="card">
-    <div class="card-title"><span class="icon">&#9745;</span> 持ち物チェック</div>
-    <div id="campingChecklist"></div>
+    <h3>&#128663; キャンピングカー道幅</h3>
+    <div id="roadList"></div>
   </div>
 </div>
 
-<!-- ======================== FISHING TAB ======================== -->
-<div class="tab-content" id="tab-fishing">
-  <div class="card">
-    <div class="card-title"><span class="icon">&#127907;</span> 5月に釣れる魚</div>
-    <div class="fish-grid">
-      <div class="fish-card best"><div class="fish-name">アジ</div><div class="fish-sub">20-50cm / 子供向き</div></div>
-      <div class="fish-card best"><div class="fish-name">メバル</div><div class="fish-sub">15-30cm / 子供向き</div></div>
-      <div class="fish-card best"><div class="fish-name">カサゴ</div><div class="fish-sub">15-25cm / 子供向き</div></div>
-      <div class="fish-card"><div class="fish-name">マダイ</div><div class="fish-sub">30-60cm / 最盛期!</div></div>
-      <div class="fish-card best"><div class="fish-name">キス</div><div class="fish-sub">15-25cm / 子供向き</div></div>
-      <div class="fish-card"><div class="fish-name">イシダイ</div><div class="fish-sub">20-40cm</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#11088;</span> おすすめ: 西郷港岸壁釣り体験</div>
-    <table class="info-table">
-      <tr><td>場所</td><td>西郷港ポートプラザ1F前</td></tr>
-      <tr><td>時間</td><td>08:40-10:10 / 12:30-14:00 / 15:30-17:00</td></tr>
-      <tr><td>料金</td><td>ガイド付き 3,000円 / レンタルのみ 2,000円</td></tr>
-      <tr><td>内容</td><td>竿・仕掛け・餌全て込み</td></tr>
-      <tr><td>予約</td><td><a href="tel:0851227100" class="phone-link">08512-2-7100</a></td></tr>
-    </table>
-    <div style="margin-top:10px;padding:10px;background:var(--primary-light);border-radius:8px;font-size:13px;">
-      <strong>子連れに最適な理由:</strong><br>
-      ・スタッフが餌付け&魚外し対応<br>
-      ・岸壁は平坦・柵ありで3歳児も安全<br>
-      ・完全初心者OK・手ぶらOK<br>
-      ・朝イチ(08:40)枠がおすすめ
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#127860;</span> 釣った魚の食べ方</div>
-    <table class="info-table">
-      <tr><td>アジ</td><td>塩焼き / なめろう</td></tr>
-      <tr><td>カサゴ</td><td>味噌汁(絶品!)</td></tr>
-      <tr><td>メバル</td><td>煮付け</td></tr>
-      <tr><td>キス</td><td>天ぷら</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#127890;</span> 釣り持ち物</div>
-    <div id="fishingChecklist"></div>
-  </div>
+<!-- Modal -->
+<div class="modal-bg" id="modalBg" onclick="closeModal(event)">
+  <div class="modal" id="modal"></div>
 </div>
 
-<!-- ======================== FOOD TAB ======================== -->
-<div class="tab-content" id="tab-food">
-  <div class="card">
-    <div class="card-title"><span class="icon">&#129450;</span> 岩ガキ(3月下旬〜6月上旬)</div>
-    <div class="resto-card">
-      <div class="resto-name">隠岐プラザホテル 緋翠</div>
-      <div class="resto-info">1,265円/個 | ランチ・ディナー | <a href="tel:0851220111" class="phone-link">08512-2-0111</a></div>
-      <div class="resto-tags">
-        <span class="tag tag-ok">子供OK</span>
-        <span class="tag tag-ok">駐車場あり</span>
-        <span class="tag tag-must">お子様セット3,850円</span>
-      </div>
-    </div>
-    <div class="resto-card">
-      <div class="resto-name">フィッシャーマンズ・ワーフ隠岐</div>
-      <div class="resto-info">セット内 | 11:00-14:00 / 18:00-21:00(水曜定休)</div>
-      <div class="resto-tags">
-        <span class="tag tag-ok">子供OK</span>
-        <span class="tag tag-ok">広い駐車場</span>
-        <span class="tag tag-ok">港直結</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#129385;</span> 隠岐牛(年間約80頭の超希少)</div>
-    <div class="resto-card">
-      <div class="resto-name">フィッシャーマンズ・ワーフ隠岐</div>
-      <div class="resto-info">隠岐牛セット 2,000-3,000円 | ランチ</div>
-      <div class="resto-tags">
-        <span class="tag tag-ok">コスパ最強</span>
-        <span class="tag tag-ok">子供OK</span>
-      </div>
-    </div>
-    <div class="resto-card">
-      <div class="resto-name">和風ダイニング 末広</div>
-      <div class="resto-info">ステーキコース 5,000-10,000円 | 17:00-21:00(LO20:00)</div>
-      <div class="resto-tags">
-        <span class="tag tag-must">本格ディナー</span>
-      </div>
-    </div>
-    <div class="resto-card">
-      <div class="resto-name">隠岐プラザホテル 緋翠</div>
-      <div class="resto-info">隠岐牛 7,590円/皿(3-11月)</div>
-      <div class="resto-tags">
-        <span class="tag tag-ok">岩ガキと同時に</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#128197;</span> 6日間 食事プラン</div>
-    <div id="mealPlan">
-      <table class="info-table" style="font-size:12px;">
-        <tr style="background:var(--primary-light)"><td><strong>5/3</strong></td><td>- / - / SA軽食</td></tr>
-        <tr><td><strong>5/4</strong></td><td>SA / <strong>ワーフ(海鮮丼)</strong> / 自炊BBQ</td></tr>
-        <tr style="background:var(--primary-light)"><td><strong>5/5</strong></td><td>自炊 / 創生館カフェ / <strong>プラザホテル(岩ガキ)</strong></td></tr>
-        <tr><td><strong>5/6</strong></td><td>自炊 / テイクアウト / <strong>釣った魚!</strong></td></tr>
-        <tr style="background:var(--primary-light)"><td><strong>5/7</strong></td><td>自炊 / ワーフ / <strong>末広(隠岐牛)</strong></td></tr>
-        <tr><td><strong>5/8</strong></td><td>自炊 / <strong>ワーフ(最後)</strong> / 自炊</td></tr>
-        <tr style="background:var(--primary-light)"><td><strong>5/9</strong></td><td>自炊 / 港周辺 / SA夕食</td></tr>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ======================== BACKUP TAB ======================== -->
-<div class="tab-content" id="tab-backup">
-  <div class="emergency-banner">
-    <h3>緊急連絡先</h3>
-    <table style="width:100%;font-size:14px;color:white;">
-      <tr><td>隠岐病院(小児科)</td><td><a href="tel:0851221356">08512-2-1356</a></td></tr>
-      <tr><td>警察(隠岐)</td><td><a href="tel:110">110</a></td></tr>
-      <tr><td>海上保安庁</td><td><a href="tel:118">118</a></td></tr>
-      <tr><td>JAF</td><td><a href="tel:0570008139">0570-00-8139</a></td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#127782;</span> 5月の天候</div>
-    <div class="weather-grid">
-      <div class="weather-item"><div class="val">21.3°C</div><div class="label">平均最高</div></div>
-      <div class="weather-item"><div class="val">12.6°C</div><div class="label">平均最低</div></div>
-      <div class="weather-item"><div class="val">126mm</div><div class="label">月間降水量</div></div>
-    </div>
-    <div style="margin-top:10px;font-size:12px;color:var(--text-light);">
-      日中はTシャツ+薄手上着。朝晩はフリース必要(12-13°C)。海風で体感温度低め。
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#9748;</span> 雨天モデルコース</div>
-    <div class="timeline" style="padding-left:24px;">
-      <div class="timeline-item"><div class="timeline-time">09:00</div><div class="timeline-title">隠岐自然館(港2F)</div><div class="timeline-desc">オキサンショウウオ展示。大人500円/子供250円</div></div>
-      <div class="timeline-item"><div class="timeline-time">11:30</div><div class="timeline-title">フィッシャーマンズ・ワーフで昼食</div></div>
-      <div class="timeline-item"><div class="timeline-time">13:00</div><div class="timeline-title">キャンピングカーでお昼寝</div></div>
-      <div class="timeline-item"><div class="timeline-time">14:30</div><div class="timeline-title">五箇創生館(シアター+カフェ)</div><div class="timeline-desc">大人500円/子供200円</div></div>
-      <div class="timeline-item"><div class="timeline-time">16:00</div><div class="timeline-title">隠岐温泉GOKAでのんびり</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#9888;</span> ローソク島 欠航時</div>
-    <table class="info-table">
-      <tr><td>5/7 運航</td><td>予定通り</td></tr>
-      <tr><td>5/7 欠航</td><td><strong>5/8(予備日)に振替</strong></td></tr>
-      <tr><td>両日欠航</td><td>諦めて自由散策</td></tr>
-    </table>
-    <div style="margin-top:8px;font-size:12px;color:var(--text-light);">
-      確認: 当日午前に <a href="tel:0851220787" class="phone-link">08512-2-0787</a> へ電話。最終判断は15:00頃。
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#9972;</span> フェリー欠航時</div>
-    <table class="info-table">
-      <tr><td>5/9 通常</td><td>15:10発で帰路</td></tr>
-      <tr><td>5/9 欠航</td><td>翌5/10始発便。西郷港Pで車中泊</td></tr>
-    </table>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">&#128138;</span> 持参する薬・装備</div>
-    <div id="medicalChecklist"></div>
-  </div>
-</div>
-
-<!-- Bottom Navigation -->
-<div class="bottom-nav" id="bottomNav">
-  <button class="active" data-tab="itinerary"><span class="nav-icon">&#128197;</span>行程</button>
-  <button data-tab="reservations"><span class="nav-icon">&#128203;</span>予約</button>
-  <button data-tab="budget"><span class="nav-icon">&#128176;</span>予算</button>
-  <button data-tab="camping"><span class="nav-icon">&#128663;</span>車両</button>
-  <button data-tab="food"><span class="nav-icon">&#127860;</span>食事</button>
-  <button data-tab="backup"><span class="nav-icon">&#9888;</span>備え</button>
+<!-- Bottom Nav -->
+<div class="bnav">
+  <button class="on" data-t="t-spots"><span class="ic">&#128205;</span>スポット</button>
+  <button data-t="t-plan"><span class="ic">&#128197;</span>予定<span class="badge" id="planBadge" style="display:none"></span></button>
+  <button data-t="t-check"><span class="ic">&#9745;</span>チェック</button>
+  <button data-t="t-info"><span class="ic">&#9432;</span>情報</button>
 </div>
 
 <script>
-// ===== TAB SWITCHING =====
-function switchTab(tabId) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.bottom-nav button').forEach(b => b.classList.remove('active'));
+// ========== DATA ==========
+const SPOTS = [
+  // --- 観光 ---
+  {id:"tama",cat:"観光",name:"玉若酢命神社",desc:"樹齢2000年の八百杉。隠岐最古の神社。",time:"30-45分",cost:"無料",road:"ok",from:"港から車15分",tel:"",tags:["歴史","パワースポット"]},
+  {id:"dangyo",cat:"観光",name:"壇鏡の滝",desc:"日本の滝百選。裏からも見られる珍しい滝。",time:"60分",cost:"無料",road:"warn",from:"港から車50分(最終区間狭い)",tel:"",tags:["自然","滝"]},
+  {id:"kabura",cat:"観光",name:"かぶら杉",desc:"幹が途中で分かれた巨木。壇鏡の滝近く。",time:"15分",cost:"無料",road:"warn",from:"壇鏡の滝の手前",tel:"",tags:["自然","巨木"]},
+  {id:"chichi",cat:"観光",name:"乳房杉",desc:"樹齢約800年。乳房状の気根が垂れ下がる神秘の杉。",time:"90分(タクシー含む)",cost:"タクシー往復約8,000円",road:"ng",from:"キャンピングカーNG!タクシー必須",tel:"08512-2-0013",tags:["自然","巨木"]},
+  {id:"goka",cat:"観光",name:"五箇創生館",desc:"牛突き展示・大画面シアター・カフェ(隠岐そば)。",time:"60分",cost:"大人500円/子供200円",road:"ok",from:"港から車25分",tel:"",tags:["屋内","雨天OK","子供向き"]},
+  {id:"nature",cat:"観光",name:"隠岐自然館",desc:"西郷港2F。オキサンショウウオ展示。子供も楽しめる。",time:"60-90分",cost:"大人500円/子供250円",road:"ok",from:"西郷港ビル2F",tel:"",tags:["屋内","雨天OK","子供向き"]},
+  {id:"kyodo",cat:"観光",name:"隠岐郷土館",desc:"明治洋風建築。民俗資料約3,000点。",time:"30-60分",cost:"大人300円/子供100円",road:"ok",from:"港から車10分",tel:"",tags:["屋内","雨天OK","歴史"]},
+  {id:"sasaki",cat:"観光",name:"佐々木家住宅",desc:"国指定重要文化財(1836年築)。伝統的な隠岐の民家。",time:"30分",cost:"要確認",road:"ok",from:"",tel:"",tags:["歴史","屋内"]},
+  {id:"ushitsuki",cat:"観光",name:"牛突き大会(5/4)",desc:"しゃくなげ祭り。年数回の貴重なイベント!",time:"2時間",cost:"要確認",road:"ok",from:"姿沢牛突き場(港から車30分)",tel:"08512-5-2211",tags:["イベント","5/4限定"]},
 
-  document.getElementById('tab-' + tabId).classList.add('active');
-  document.querySelectorAll(`[data-tab="${tabId}"]`).forEach(b => b.classList.add('active'));
-  window.scrollTo(0, 0);
-}
+  // --- 絶景 ---
+  {id:"rosoku",cat:"絶景",name:"ローソク島遊覧船",desc:"夕日がローソク岩の先端に灯る瞬間は絶景。",time:"約50分(船)",cost:"大人3,000円/子供1,500円",road:"warn",from:"福浦港(港から車33分)。30分前集合。",tel:"08512-2-0787",tags:["夕方限定","要予約","天候次第"]},
+  {id:"jodo",cat:"絶景",name:"浄土ヶ浦海岸",desc:"奇岩・洞窟の遊歩道。広い駐車場・トイレ完備。",time:"60-90分",cost:"無料",road:"ok",from:"港から車30分",tel:"",tags:["自然","散策","子供向き"]},
+  {id:"shaku",cat:"絶景",name:"村上家しゃくなげ園",desc:"5月が見頃。牛突き場の近く。",time:"30分",cost:"要確認",road:"ok",from:"牛突き場隣接",tel:"",tags:["花","5月見頃"]},
+  {id:"sunset",cat:"絶景",name:"西郷港の夕景",desc:"港から眺める夕日。散歩がてら手軽に楽しめる。",time:"自由",cost:"無料",road:"ok",from:"西郷港周辺",tel:"",tags:["無料","手軽"]},
 
-document.getElementById('tabNav').addEventListener('click', e => {
-  if (e.target.dataset.tab) switchTab(e.target.dataset.tab);
-});
-document.getElementById('bottomNav').addEventListener('click', e => {
-  const btn = e.target.closest('button');
-  if (btn && btn.dataset.tab) switchTab(btn.dataset.tab);
-});
+  // --- 海遊び ---
+  {id:"naka-beach",cat:"海遊び",name:"中村海水浴場",desc:"ビーチ隣接のキャンプ場。浅くて子供も安心。",time:"自由",cost:"無料",road:"ok",from:"港から車25分",tel:"",tags:["ビーチ","子供向き","無料"]},
+  {id:"marine",cat:"海遊び",name:"海洋スポーツセンター",desc:"カヤック・SUP体験。7歳から参加可能。",time:"2時間",cost:"レンタル料別途",road:"ok",from:"港から車20分",tel:"",tags:["アクティビティ","7歳〜"]},
+  {id:"tatsugi",cat:"海遊び",name:"立木キャンプ場(海辺)",desc:"海沿いのキャンプ場。ビーチ徒歩5分。",time:"自由",cost:"300円/人",road:"ok",from:"",tel:"",tags:["ビーチ"]},
 
-// ===== DAY TOGGLE =====
-function toggleDay(header) {
-  header.classList.toggle('collapsed');
-  header.nextElementSibling.classList.toggle('collapsed');
-}
+  // --- 釣り ---
+  {id:"fish-guide",cat:"釣り",name:"西郷港岸壁釣り(ガイド付)",desc:"竿・餌込み90分。スタッフが餌付け&魚外し対応。初心者OK。",time:"90分(枠: 8:40/12:30/15:30)",cost:"3,000円(ガイド付) / 2,000円(レンタルのみ)",road:"ok",from:"西郷港ポートプラザ1F前",tel:"08512-2-7100",tags:["要予約","子供向き","手ぶらOK"]},
+  {id:"fish-tsuma",cat:"釣り",name:"都万港(自由釣り)",desc:"比較的広い港。アジ・キス・チヌ。",time:"自由",cost:"無料",road:"ok",from:"港から車20分",tel:"",tags:["無料","自由"]},
 
-// ===== CHECKLISTS =====
-function createChecklist(containerId, items, storageKey) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+  // --- 食事 ---
+  {id:"fw",cat:"食事",name:"フィッシャーマンズ・ワーフ隠岐",desc:"海鮮丼・岩ガキ・隠岐牛セット。港直結で子連れ最適。",time:"昼11:00-14:00/夜18:00-21:00",cost:"1,500-3,000円",road:"ok",from:"西郷港直結",tel:"",tags:["海鮮","隠岐牛","岩ガキ","子供OK","水曜定休"]},
+  {id:"plaza",cat:"食事",name:"隠岐プラザホテル 緋翠",desc:"岩ガキ1,265円/個。隠岐牛7,590円。お子様セット3,850円。",time:"ランチ・ディナー",cost:"3,000-10,000円",road:"ok",from:"西郷港近く",tel:"08512-2-0111",tags:["岩ガキ","隠岐牛","お子様メニュー","要予約"]},
+  {id:"suehiro",cat:"食事",name:"和風ダイニング 末広",desc:"隠岐牛ステーキコース。本格ディナー。",time:"17:00-21:00(LO20:00)",cost:"5,000-10,000円",road:"ok",from:"西郷エリア",tel:"",tags:["隠岐牛","ディナー","要予約"]},
+  {id:"goka-cafe",cat:"食事",name:"五箇創生館カフェ",desc:"隠岐そば・軽食。五箇創生館の中。",time:"施設営業時間内",cost:"500-1,000円",road:"ok",from:"五箇創生館内",tel:"",tags:["軽食","カジュアル"]},
 
-  container.innerHTML = items.map((item, i) => {
-    const checked = saved[i] ? 'checked' : '';
-    const checkedClass = saved[i] ? 'checked' : '';
-    return `<div class="checklist-item ${checkedClass}">
-      <input type="checkbox" ${checked} data-idx="${i}">
-      <div><div class="check-label">${item.label}</div>${item.sub ? `<div class="check-sub">${item.sub}</div>` : ''}</div>
-    </div>`;
-  }).join('');
+  // --- 買い物 ---
+  {id:"himari",cat:"買い物",name:"ひまりスーパー隠岐店",desc:"島内最大のスーパー。惣菜・弁当・鮮魚あり。",time:"~21:00",cost:"-",road:"ok",from:"西郷エリア",tel:"",tags:["食材","日用品"]},
+  {id:"sun",cat:"買い物",name:"サンテラス",desc:"港近くのコンビニ的存在。弁当・飲料。",time:"10:00-20:00",cost:"-",road:"ok",from:"西郷港近く",tel:"",tags:["弁当","飲料"]},
+  {id:"omiyage",cat:"買い物",name:"港プラザお土産コーナー",desc:"藻塩・さざえカレー・島のり等。帰りのフェリー前に。",time:"フェリー営業時間",cost:"-",road:"ok",from:"西郷港ビル内",tel:"",tags:["お土産"]},
 
-  container.addEventListener('change', e => {
-    if (e.target.type === 'checkbox') {
-      const idx = e.target.dataset.idx;
-      const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
-      saved[idx] = e.target.checked;
-      localStorage.setItem(storageKey, JSON.stringify(saved));
-      e.target.closest('.checklist-item').classList.toggle('checked', e.target.checked);
-      updateProgress(containerId, storageKey, items.length);
-    }
-  });
-}
+  // --- 温泉 ---
+  {id:"onsen",cat:"温泉",name:"隠岐温泉GOKA",desc:"五箇エリアの温泉施設。キャンプ後に最適。",time:"要確認",cost:"大人500円程度",road:"ok",from:"五箇エリア",tel:"",tags:["温泉","リラックス"]},
 
-function updateProgress(containerId, storageKey, total) {
-  const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
-  const done = Object.values(saved).filter(Boolean).length;
-  const bar = document.querySelector(`#${containerId} ~ .progress-bar .progress-fill, #${containerId} .progress-bar .progress-fill`);
-  // Progress bars are updated inline
-}
+  // --- キャンプ場 ---
+  {id:"geo",cat:"宿泊",name:"ジオリゾートシンフォニー",desc:"電源付オートサイト。テーブル・炊事場・ピザ窯あり。",time:"チェックイン要確認",cost:"3,000円/泊(4名まで)",road:"ok",from:"港から車25-35分",tel:"",tags:["電源あり","オートキャンプ","要予約"]},
+  {id:"nakamura-camp",cat:"宿泊",name:"中村キャンプ場",desc:"ビーチ隣接。レストラン併設。",time:"",cost:"大人1,000円/子供500円",road:"ok",from:"港から車25分",tel:"",tags:["ビーチ隣接"]},
+  {id:"mimoza",cat:"宿泊",name:"ミモザキャンプ場",desc:"浄土ヶ浦近く。シャワーあり。",time:"",cost:"1,100-1,650円/泊",road:"ok",from:"浄土ヶ浦近く",tel:"",tags:["海沿い"]},
 
-// Camping checklist items
-createChecklist('campingChecklist', [
-  { label: '清水タンク満タン', sub: '出発前に給水' },
-  { label: '排水タンク空にする' },
-  { label: 'ポータブルトイレ清掃' },
-  { label: 'サブバッテリー満充電' },
-  { label: '外部電源ケーブル', sub: 'キャンプ場接続用' },
-  { label: '延長コード(10m以上)' },
-  { label: 'カセットガスボンベ x 6本' },
-  { label: 'ガソリン満タン', sub: '七類港周辺で最終給油' },
-  { label: '車検証コピー', sub: 'フェリー乗船に必須!' },
-  { label: 'チャイルドシート(3歳)' },
-  { label: 'ジュニアシート(7歳)' },
-  { label: '長靴(子供2足)' },
-  { label: '着替え(1日2セット)' },
-  { label: '水着・ラッシュガード' },
-  { label: '帽子・日焼け止め' },
-  { label: '虫除けスプレー' },
-  { label: 'レインウェア(家族4人分)' },
-  { label: 'クーラーボックス + 保冷剤' },
-  { label: '食料・飲料の買い出し', sub: '島内スーパーは品薄の可能性' },
-  { label: 'タブレット充電', sub: '雨天時の子供用' },
-], 'oki-camping-check');
-
-// Fishing checklist
-createChecklist('fishingChecklist', [
-  { label: '長靴(子供用)' },
-  { label: '着替え一式' },
-  { label: 'タオル x 2' },
-  { label: '帽子 + 日焼け止め' },
-  { label: '飲み物・おやつ' },
-  { label: 'ウェットティッシュ' },
-  { label: 'カメラ' },
-  { label: 'ジップロック(持ち帰り用)' },
-  { label: 'クーラーボックス + 氷' },
-], 'oki-fishing-check');
-
-// Medical checklist
-createChecklist('medicalChecklist', [
-  { label: '酔い止め', sub: 'フェリー+車酔い対策' },
-  { label: '解熱剤(子供用・座薬含む)' },
-  { label: '絆創膏・消毒液' },
-  { label: '体温計' },
-  { label: '保険証コピー' },
-  { label: 'お薬手帳' },
-  { label: '虫刺され薬(ムヒ等)' },
-  { label: 'OS-1(経口補水液)', sub: '脱水対策' },
-], 'oki-medical-check');
-
-// ===== RESERVATIONS =====
-const reservations = [
-  { name: 'フェリー(往路 5/4)', tel: '08512-2-1122', done: true },
-  { name: 'フェリー(復路 5/9)', tel: '08512-2-1122', done: true },
-  { name: 'ジオリゾートシンフォニー(4泊)', tel: '', done: false },
-  { name: '西郷港釣り体験(5/6)', tel: '08512-2-7100', done: false },
-  { name: 'ローソク島遊覧(5/7)', tel: '08512-2-0787', done: false },
-  { name: '乳房杉タクシー(5/7)', tel: '08512-2-0013', done: false },
-  { name: '隠岐プラザホテル夕食(5/5)', tel: '08512-2-0111', done: false },
-  { name: '末広 夕食(5/7)', tel: '', done: false },
+  // --- 医療 ---
+  {id:"hospital",cat:"医療",name:"隠岐病院(小児科あり)",desc:"島内唯一の総合病院。救急対応あり。休日は電話してから来院。",time:"外来受付 平日8:00-11:00",cost:"保険適用",road:"ok",from:"西郷エリア(城北町355)",tel:"08512-2-1356",tags:["小児科","救急","平日のみ外来"]},
 ];
 
-function renderReservations() {
-  const saved = JSON.parse(localStorage.getItem('oki-reservations') || '{}');
-  const el = document.getElementById('reservationList');
-  el.innerHTML = reservations.map((r, i) => {
-    const isDone = saved[i] !== undefined ? saved[i] : r.done;
-    return `<div class="res-item">
-      <div>
-        <div style="font-weight:600">${r.name}</div>
-        ${r.tel ? `<div style="font-size:11px"><a href="tel:${r.tel.replace(/-/g,'')}" class="phone-link">${r.tel}</a></div>` : ''}
+const CATEGORIES = ["すべて","観光","絶景","海遊び","釣り","食事","買い物","温泉","宿泊","医療"];
+const CAT_ICONS = {"すべて":"&#128205;","観光":"&#9962;","絶景":"&#127748;","海遊び":"&#127754;","釣り":"&#127907;","食事":"&#127860;","買い物":"&#128722;","温泉":"&#9832;","宿泊":"&#9978;","医療":"&#128657;"};
+const ROAD_LABEL = {ok:["OK","t-ok"],warn:["注意","t-warn"],ng:["NG","t-ng"]};
+
+const DAYS = [
+  {id:"d0",label:"前日",sub:"5/3(日)",date:"5/3",fixed:["18:00 大阪出発 → 22:00 七類港(車中泊)"]},
+  {id:"d1",label:"Day1",sub:"5/4(月祝)",date:"5/4",fixed:["08:00 七類港チェックイン(1時間前必須)","09:00 フェリー出港","11:25 西郷港 到着"]},
+  {id:"d2",label:"Day2",sub:"5/5(火祝)",date:"5/5",fixed:[]},
+  {id:"d3",label:"Day3",sub:"5/6(水祝)",date:"5/6",fixed:[]},
+  {id:"d4",label:"Day4",sub:"5/7(木)",date:"5/7",fixed:[]},
+  {id:"d5",label:"Day5",sub:"5/8(金)",date:"5/8",fixed:[]},
+  {id:"d6",label:"Day6",sub:"5/9(土)",date:"5/9",fixed:["14:00 西郷港チェックイン","15:10 フェリー出港","17:35 七類港 到着 → 大阪へ(約4h)"]},
+];
+
+const ROAD_DATA = [
+  ["西郷港 ↔ キャンプ場","ok"],["西郷港 ↔ 玉若酢命神社","ok"],["西郷港 ↔ 浄土ヶ浦","ok"],
+  ["西郷港 ↔ 中村海水浴場","ok"],["壇鏡の滝(最終区間)","warn"],["かぶら杉周辺","warn"],
+  ["福浦港(ローソク島)","warn"],["乳房杉アクセス道","ng"],["ローソク島展望台(陸路)","ng"]
+];
+
+const RES_ITEMS = [
+  "フェリー往路(5/4) 08512-2-1122","フェリー復路(5/9) 08512-2-1122",
+  "キャンプ場(ジオリゾートシンフォニー)","西郷港釣り体験 08512-2-7100",
+  "ローソク島遊覧 08512-2-0787","乳房杉タクシー 08512-2-0013",
+  "隠岐プラザホテル夕食 08512-2-0111","末広 夕食"
+];
+
+const PACK_ITEMS = [
+  "車検証コピー(フェリー必須)","清水タンク満タン","サブバッテリー充電","外部電源ケーブル+延長コード",
+  "カセットガスボンベ x6","クーラーボックス+保冷剤","チャイルドシート(3歳)","ジュニアシート(7歳)",
+  "長靴(子供2足)","着替え(多めに)","水着・ラッシュガード","帽子・日焼け止め","虫除けスプレー",
+  "レインウェア(4人分)","酔い止め(フェリー用)","解熱剤(子供用)","絆創膏・消毒液・体温計",
+  "保険証コピー・お薬手帳","食料・飲料(島内スーパー品薄注意)","タブレット(雨天時用)"
+];
+
+// ========== STATE ==========
+let currentCat = "すべて";
+let currentDay = "d1";
+let plan = JSON.parse(localStorage.getItem('oki-plan') || '{}');
+DAYS.forEach(d => { if (!plan[d.id]) plan[d.id] = []; });
+
+// ========== RENDER ==========
+function savePlan(){ localStorage.setItem('oki-plan', JSON.stringify(plan)); updateBadge(); }
+
+function updateBadge(){
+  const total = Object.values(plan).flat().length;
+  const b = document.getElementById('planBadge');
+  if(total>0){b.textContent=total;b.style.display='inline'}else{b.style.display='none'}
+}
+
+// Category filter
+function renderCats(){
+  document.getElementById('catFilter').innerHTML = CATEGORIES.map(c =>
+    `<button class="cbtn${c===currentCat?' on':''}" onclick="filterCat('${c}')">${CAT_ICONS[c]||''} ${c}</button>`
+  ).join('');
+}
+function filterCat(c){ currentCat=c; renderCats(); renderSpots(); }
+
+// Spot list
+function renderSpots(){
+  const list = currentCat==="すべて" ? SPOTS : SPOTS.filter(s=>s.cat===currentCat);
+  document.getElementById('spotList').innerHTML = list.map(s => {
+    const [rl,rc] = ROAD_LABEL[s.road];
+    const inPlan = Object.values(plan).flat().includes(s.id);
+    return `<div class="spot" onclick="openSpot('${s.id}')" style="border-left-color:${inPlan?'var(--acc)':'var(--pri)'}; ${inPlan?'opacity:.6':''}">
+      <div class="sname">${s.name} ${inPlan?'<span style="font-size:11px;color:var(--acc)">&#10003; 予定に追加済</span>':''}</div>
+      <div class="sdesc">${s.desc}</div>
+      <div class="stags">
+        <span class="tag t-info">${s.cat}</span>
+        <span class="tag ${rc}">${rl}</span>
+        ${s.tags.map(t=>`<span class="tag t-free">${t}</span>`).join('')}
       </div>
-      <button class="res-status ${isDone ? 'res-done' : 'res-todo'}" onclick="toggleRes(${i})">${isDone ? '予約済' : '未予約'}</button>
     </div>`;
   }).join('');
-
-  const done = reservations.filter((_, i) => (saved[i] !== undefined ? saved[i] : reservations[i].done)).length;
-  const total = reservations.length;
-  const pct = Math.round(done / total * 100);
 }
 
-function toggleRes(idx) {
-  const saved = JSON.parse(localStorage.getItem('oki-reservations') || '{}');
-  const current = saved[idx] !== undefined ? saved[idx] : reservations[idx].done;
-  saved[idx] = !current;
-  localStorage.setItem('oki-reservations', JSON.stringify(saved));
-  renderReservations();
-}
+// Spot detail modal
+function openSpot(id){
+  const s = SPOTS.find(x=>x.id===id);
+  if(!s) return;
+  const [rl,rc] = ROAD_LABEL[s.road];
+  const inDays = DAYS.filter(d=>plan[d.id].includes(id));
 
-renderReservations();
+  let html = `<h3>${s.name}</h3>
+    <p style="font-size:13px;color:var(--txt2);margin-bottom:12px">${s.desc}</p>
+    <table class="itable">
+      ${s.time?`<tr><td>所要時間</td><td>${s.time}</td></tr>`:''}
+      ${s.cost?`<tr><td>料金</td><td>${s.cost}</td></tr>`:''}
+      ${s.from?`<tr><td>アクセス</td><td>${s.from}</td></tr>`:''}
+      <tr><td>車両通行</td><td><span class="tag ${rc}">${rl}</span>${s.road==='ng'?' タクシー利用':s.road==='warn'?' 慎重運転で可':''}</td></tr>
+      ${s.tel?`<tr><td>電話</td><td><a href="tel:${s.tel.replace(/-/g,'')}">${s.tel}</a></td></tr>`:''}
+    </table>`;
 
-// ===== BUDGET =====
-const budget = {
-  'フェリー代': { items: [
-    ['車両運賃(往路)', 35530], ['車両運賃(復路)', 35530],
-    ['大人追加(往路)', 3510], ['大人追加(復路)', 3510],
-    ['小学生(往路)', 1760], ['小学生(復路)', 1760],
-  ]},
-  '高速 & ガソリン': { items: [
-    ['高速料金(往復)', 13000], ['ガソリン(本土)', 10000], ['ガソリン(島内)', 5000],
-  ]},
-  '宿泊(キャンプ)': { items: [
-    ['ジオリゾート(4泊)', 12000],
-  ]},
-  '食費': { items: [
-    ['自炊(5日分)', 15000], ['プラザホテル(5/5夕)', 12000],
-    ['末広(5/7夕)', 18000], ['ランチ(5日)', 15000], ['SA休憩(往復)', 4000],
-  ]},
-  'アクティビティ': { items: [
-    ['釣り体験(3名)', 9000], ['ローソク島(3名)', 7500],
-    ['自然館+創生館', 2450], ['タクシー(乳房杉)', 8000], ['温泉(5日)', 5000],
-  ]},
-  'お土産・雑費': { items: [
-    ['お土産', 10000], ['予備費', 10000],
-  ]},
-};
-
-function renderBudget() {
-  const el = document.getElementById('budgetContent');
-  let html = '<div class="card-title"><span class="icon">&#128176;</span> 予算管理</div>';
-  let grandTotal = 0;
-
-  for (const [cat, data] of Object.entries(budget)) {
-    const sub = data.items.reduce((s, i) => s + i[1], 0);
-    grandTotal += sub;
-    html += `<div class="budget-category">
-      <div class="budget-category-header"><span>${cat}</span><span>${sub.toLocaleString()}円</span></div>`;
-    data.items.forEach(([name, amt]) => {
-      html += `<div class="budget-item"><span>${name}</span><span class="budget-amount">${amt.toLocaleString()}円</span></div>`;
-    });
-    html += '</div>';
+  if(inDays.length>0){
+    html += `<div style="margin:12px 0 8px;font-size:12px;color:var(--acc);font-weight:600">追加済: ${inDays.map(d=>d.sub).join(', ')}</div>`;
   }
 
-  html += `<div class="budget-total"><span>合計(税込目安)</span><span>${grandTotal.toLocaleString()}円</span></div>`;
-  html += `<div style="margin-top:8px;padding:8px;background:var(--primary-light);border-radius:8px;font-size:12px;">
-    フリー航送車輌運賃適用で約18,000円節約の可能性あり
-  </div>`;
-  el.innerHTML = html;
+  html += `<div style="margin-top:14px"><div style="font-size:12px;font-weight:600;margin-bottom:6px">予定に追加:</div>`;
+  DAYS.forEach(d => {
+    const has = plan[d.id].includes(id);
+    html += `<button class="mbtn ${has?'mbtn-sec':'mbtn-pri'}" style="margin-bottom:4px" onclick="toggleSpotDay('${id}','${d.id}')">${has?'&#10003; ':''} ${d.sub} ${d.label}</button>`;
+  });
+  html += `</div><button class="mbtn mbtn-sec" style="margin-top:8px" onclick="closeModal()">閉じる</button>`;
+
+  document.getElementById('modal').innerHTML = html;
+  document.getElementById('modalBg').classList.add('show');
 }
-renderBudget();
+
+function toggleSpotDay(spotId, dayId){
+  const idx = plan[dayId].indexOf(spotId);
+  if(idx>=0) plan[dayId].splice(idx,1);
+  else plan[dayId].push(spotId);
+  savePlan();
+  openSpot(spotId); // refresh modal
+  renderSpots();
+  renderPlan();
+}
+
+function closeModal(e){
+  if(!e || e.target===document.getElementById('modalBg'))
+    document.getElementById('modalBg').classList.remove('show');
+}
+
+// Day planner
+function renderDayTabs(){
+  document.getElementById('dayTabs').innerHTML = DAYS.map(d => {
+    const cnt = plan[d.id].length;
+    return `<button class="dbtn${d.id===currentDay?' on':''}" onclick="selectDay('${d.id}')">
+      ${d.label}<span class="dsub">${d.sub}</span>${cnt?`<span class="badge">${cnt}</span>`:''}
+    </button>`;
+  }).join('');
+}
+function selectDay(id){ currentDay=id; renderDayTabs(); renderPlan(); }
+
+function renderPlan(){
+  const d = DAYS.find(x=>x.id===currentDay);
+  let html = '';
+
+  // Fixed schedules
+  if(d.fixed.length){
+    html += d.fixed.map(f=>`<div class="fixed"><b>&#128204;</b> ${f}</div>`).join('');
+  }
+
+  const items = plan[currentDay];
+  if(items.length===0){
+    html += `<div class="empty-msg">&#128205; スポットタブからお好みの場所を追加してください</div>`;
+  } else {
+    items.forEach((sid,i) => {
+      const s = SPOTS.find(x=>x.id===sid);
+      if(!s) return;
+      html += `<div class="pitem">
+        <div class="pnum">${i+1}</div>
+        <div class="pname">${s.name}<br><span style="font-size:11px;color:var(--txt2);font-weight:400">${s.cat} / ${s.cost||''}</span></div>
+        <div class="pmove">
+          <button onclick="moveItem(${i},-1)" ${i===0?'disabled':''}>&#9650;</button>
+          <button onclick="moveItem(${i},1)" ${i===items.length-1?'disabled':''}>&#9660;</button>
+        </div>
+        <button class="pdel" onclick="removeItem(${i})">&#10005;</button>
+      </div>`;
+    });
+  }
+
+  document.getElementById('planContent').innerHTML = html;
+  renderDayTabs();
+}
+
+function moveItem(idx, dir){
+  const items = plan[currentDay];
+  const newIdx = idx + dir;
+  if(newIdx<0||newIdx>=items.length) return;
+  [items[idx], items[newIdx]] = [items[newIdx], items[idx]];
+  savePlan(); renderPlan();
+}
+
+function removeItem(idx){
+  plan[currentDay].splice(idx,1);
+  savePlan(); renderPlan(); renderSpots();
+}
+
+// Checklists
+function renderChecklist(containerId, items, key){
+  const saved = JSON.parse(localStorage.getItem(key)||'{}');
+  document.getElementById(containerId).innerHTML = items.map((item,i) => {
+    const ck = saved[i]?'checked':'';
+    return `<div class="chk ${saved[i]?'done':''}">
+      <input type="checkbox" ${ck} onchange="toggleCheck('${key}',${i},this)">
+      <label>${item}</label></div>`;
+  }).join('');
+}
+function toggleCheck(key,idx,el){
+  const saved=JSON.parse(localStorage.getItem(key)||'{}');
+  saved[idx]=el.checked;
+  localStorage.setItem(key,JSON.stringify(saved));
+  el.closest('.chk').classList.toggle('done',el.checked);
+}
+
+// Road list
+function renderRoads(){
+  document.getElementById('roadList').innerHTML = ROAD_DATA.map(([name,st]) => {
+    const [rl,rc]=ROAD_LABEL[st];
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--bdr);font-size:13px"><span>${name}</span><span class="tag ${rc}">${rl}</span></div>`;
+  }).join('');
+}
+
+// Tab switching
+document.querySelector('.bnav').addEventListener('click',e=>{
+  const btn=e.target.closest('button');
+  if(!btn||!btn.dataset.t) return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.bnav button').forEach(b=>b.classList.remove('on'));
+  document.getElementById(btn.dataset.t).classList.add('on');
+  btn.classList.add('on');
+  window.scrollTo(0,0);
+});
+
+// Init
+renderCats(); renderSpots(); renderDayTabs(); renderPlan();
+renderChecklist('resChecklist',RES_ITEMS,'oki-res');
+renderChecklist('packChecklist',PACK_ITEMS,'oki-pack');
+renderRoads(); updateBadge();
 </script>
 </body>
 </html>
