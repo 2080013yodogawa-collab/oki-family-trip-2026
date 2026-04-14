@@ -78,7 +78,7 @@ a{color:var(--sea1);text-decoration:none;font-weight:600}
 
 /* Links row */
 .link-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
-.link-btn{display:inline-flex;align-items:center;gap:4px;padding:7px 12px;border-radius:10px;font-size:12px;font-weight:600;text-decoration:none;transition:opacity .2s}
+.link-btn{display:inline-flex;align-items:center;gap:4px;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity .2s;touch-action:auto;cursor:pointer;-webkit-user-select:none;user-select:none;min-height:44px}
 .link-btn:active{opacity:.7}
 .link-map{background:#e8f5e9;color:#2e7d32}
 .link-web{background:var(--sea4);color:var(--deep)}
@@ -228,7 +228,7 @@ a{color:var(--sea1);text-decoration:none;font-weight:600}
   </div>
 </div>
 
-<div class="modal-bg" id="modalBg" onclick="closeModal(event)"><div class="modal" id="modal"></div></div>
+<div class="modal-bg" id="modalBg" onclick="closeModal(event)"><div class="modal" id="modal" onclick="event.stopPropagation()"></div></div>
 
 <div class="bnav">
   <button class="on" data-t="t-spots"><span class="ic">🐠</span>スポット</button>
@@ -439,9 +439,9 @@ function openSpot(id){
   const inD=DAYS.filter(d=>plan[d.id].includes(id));
   let h=`<h3>${s.icon} ${s.name}</h3><p class="mdesc">${s.desc}</p>
     <div class="link-row">
-      ${s.map?`<a class="link-btn link-map" href="https://maps.google.com/maps?q=${encodeURIComponent(s.map)}" target="_blank" onclick="event.stopPropagation()">📍 Google Map</a>`:''}
-      ${s.web?`<a class="link-btn link-web" href="${s.web}" target="_blank" onclick="event.stopPropagation()">🌐 公式サイト</a>`:''}
-      ${s.book?`<a class="link-btn link-book" href="${s.book}" target="_blank" onclick="event.stopPropagation()">📝 予約</a>`:''}
+      ${s.map?`<a class="link-btn link-map" href="https://maps.google.com/maps?q=${encodeURIComponent(s.map)}" target="_blank" rel="noopener">📍 Google Map</a>`:''}
+      ${s.web?`<a class="link-btn link-web" href="${s.web}" target="_blank" rel="noopener">🌐 公式サイト</a>`:''}
+      ${s.book?`<a class="link-btn link-book" href="${s.book}" target="_blank" rel="noopener">📝 予約</a>`:''}
     </div>
     <table class="itable">
       <tr><td>🌊 島</td><td><span class="tag t-${s.isl}">${isl.name}</span></td></tr>
@@ -509,7 +509,7 @@ function rPlan(){
     // Route action buttons
     h+=`<div class="route-bar">`;
     if(items.length>=2) h+=`<button class="route-btn route-btn-opt" onclick="optRoute()">🔄 ルート最適化</button>`;
-    h+=`<a class="route-btn route-btn-map" href="${mapsUrl()}" target="_blank">📍 Google Mapsで経路を開く</a>`;
+    h+=`<a class="route-btn route-btn-map" href="${mapsUrl()}" target="_blank" rel="noopener">📍 Google Mapsで経路を開く</a>`;
     h+=`</div>`;
     // Spot list with arrows
     items.forEach((sid,i)=>{
