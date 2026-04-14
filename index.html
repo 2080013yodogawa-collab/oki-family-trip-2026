@@ -173,7 +173,12 @@ a{color:var(--sea1);text-decoration:none;font-weight:600}
 <div class="tab" id="t-check">
   <div class="card"><h3>📋 予約リスト</h3><div id="resChecklist"></div></div>
   <div class="sea-divider">~ 🌊 ~</div>
-  <div class="card"><h3>🎒 持ち物チェック</h3><div id="packChecklist"></div></div>
+  <div class="card"><h3>🎒 持ち物チェック</h3><div id="packChecklist"></div>
+    <div style="display:flex;gap:6px;margin-top:10px">
+      <input type="text" id="addPackInput" placeholder="追加する持ち物を入力..." style="flex:1;padding:10px 12px;border:1.5px solid var(--sea3);border-radius:10px;font-size:13px;font-family:inherit;background:var(--sea5);outline:none" onfocus="this.style.borderColor='var(--sea1)'" onblur="this.style.borderColor='var(--sea3)'">
+      <button onclick="addPack()" style="padding:10px 16px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--sea1),var(--sea2));color:#fff;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap">＋追加</button>
+    </div>
+  </div>
 </div>
 
 <div class="tab" id="t-info">
@@ -531,11 +536,52 @@ function rPlan(){
 function mv(i,d){const a=plan[cDay],n=i+d;if(n<0||n>=a.length)return;[a[i],a[n]]=[a[n],a[i]];save();rPlan()}
 function rm(i){plan[cDay].splice(i,1);save();rPlan();rSpots()}
 
+// Custom pack items
+function getCustomPack(){return JSON.parse(localStorage.getItem('oki-pack-custom')||'[]')}
+function saveCustomPack(arr){localStorage.setItem('oki-pack-custom',JSON.stringify(arr))}
+
 function rChk(cid,items,key){
   const sv=JSON.parse(localStorage.getItem(key)||'{}');
-  $(cid).innerHTML=items.map((it,i)=>`<div class="chk${sv[i]?' done':''}"><input type="checkbox" ${sv[i]?'checked':''} onchange="tChk('${key}',${i},this)"><label>${it}</label></div>`).join('');
+  const custom=cid==='packChecklist'?getCustomPack():[];
+  const all=[...items,...custom];
+  $(cid).innerHTML=all.map((it,i)=>{
+    const isCustom=i>=items.length;
+    return `<div class="chk${sv[i]?' done':''}">
+      <input type="checkbox" ${sv[i]?'checked':''} onchange="tChk('${key}',${i},this)">
+      <label>${it}</label>
+      ${isCustom?`<button onclick="rmPack(${i-items.length})" style="width:24px;height:24px;border-radius:50%;border:none;background:rgba(255,138,128,.15);color:var(--coral);font-size:12px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center">✕</button>`:''}
+    </div>`}).join('');
 }
 function tChk(k,i,el){const s=JSON.parse(localStorage.getItem(k)||'{}');s[i]=el.checked;localStorage.setItem(k,JSON.stringify(s));el.closest('.chk').classList.toggle('done',el.checked)}
+
+function addPack(){
+  const input=$('addPackInput');
+  const v=input.value.trim();
+  if(!v)return;
+  const custom=getCustomPack();
+  custom.push(v);
+  saveCustomPack(custom);
+  input.value='';
+  rChk('packChecklist',PACK,'oki-pack2');
+}
+function rmPack(ci){
+  const custom=getCustomPack();
+  custom.splice(ci,1);
+  saveCustomPack(custom);
+  // also clean up check state
+  const sv=JSON.parse(localStorage.getItem('oki-pack2')||'{}');
+  const idx=PACK.length+ci;
+  delete sv[idx];
+  // reindex remaining custom checks
+  const newSv={};
+  Object.keys(sv).forEach(k=>{const n=Number(k);if(n<idx)newSv[k]=sv[k];else if(n>idx)newSv[n-1]=sv[k]});
+  // keep base items
+  Object.keys(sv).forEach(k=>{if(Number(k)<PACK.length)newSv[k]=sv[k]});
+  localStorage.setItem('oki-pack2',JSON.stringify(newSv));
+  rChk('packChecklist',PACK,'oki-pack2');
+}
+// Enter key to add
+document.addEventListener('keydown',e=>{if(e.target.id==='addPackInput'&&e.key==='Enter'){e.preventDefault();addPack()}})
 
 document.querySelector('.bnav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!b.dataset.t)return;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.bnav button').forEach(b=>b.classList.remove('on'));$(b.dataset.t).classList.add('on');b.classList.add('on');window.scrollTo(0,0)});
 
