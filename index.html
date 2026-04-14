@@ -228,46 +228,46 @@ const ISLANDS=[
   {id:"chibu",name:"🌸 知夫里島",sub:"知夫村",port:"来居港",desc:"人口約600人の最小の島。赤壁の絶景と360°パノラマの赤ハゲ山。",icon:"🌺"}
 ];
 
-const CATS=["すべて","観光","絶景","海遊び","釣り","食事","買い物","温泉・宿泊","医療"];
+const CATS=["すべて","👶子連れ","⛺キャンプ&RV","観光","絶景","海遊び","釣り","食事","買い物","温泉・宿泊","医療"];
 
 const S=[
 // ===== 島後 =====
-{id:"tama",isl:"dogo",cat:"観光",icon:"⛩",name:"玉若酢命神社",desc:"樹齢2000年の八百杉。隠岐造りの本殿は国指定重要文化財。",time:"30-45分",cost:"無料(宝物殿300円)",road:"ok",from:"西郷港から車10分",tel:"08512-2-0571",tags:["歴史","パワースポット"],web:"https://www.e-oki.net/spots/6065/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tamawakasu-mikoto-jinja%2C_shaden.jpg/640px-Tamawakasu-mikoto-jinja%2C_shaden.jpg",map:"玉若酢命神社+隠岐の島町"},
+{id:"tama",kids:1,isl:"dogo",cat:"観光",icon:"⛩",name:"玉若酢命神社",desc:"樹齢2000年の八百杉。隠岐造りの本殿は国指定重要文化財。",time:"30-45分",cost:"無料(宝物殿300円)",road:"ok",from:"西郷港から車10分",tel:"08512-2-0571",tags:["歴史","パワースポット"],web:"https://www.e-oki.net/spots/6065/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tamawakasu-mikoto-jinja%2C_shaden.jpg/640px-Tamawakasu-mikoto-jinja%2C_shaden.jpg",map:"玉若酢命神社+隠岐の島町"},
 {id:"mizu",isl:"dogo",cat:"観光",icon:"⛩",name:"水若酢神社",desc:"隠岐国一宮。隣接の隠岐郷土館は明治洋風建築。",time:"45分",cost:"無料(郷土館300円)",road:"ok",from:"西郷港から車30分",tel:"",tags:["歴史","一宮"],web:"https://www.e-oki.net/spots/6071/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Mizuwakasu-jinja_ichinotorii.jpg/640px-Mizuwakasu-jinja_ichinotorii.jpg",map:"水若酢神社+隠岐の島町"},
-{id:"nature",isl:"dogo",cat:"観光",icon:"🦎",name:"隠岐自然館",desc:"西郷港2F。オキサンショウウオの生体展示。ジオパーク解説。",time:"60-90分",cost:"大人500円/子供250円",road:"ok",from:"西郷港ビル2F",tel:"",tags:["屋内","雨天OK","子供向き"],web:"https://www.oki-geopark.jp/museum/nature/",book:"",img:"",map:"隠岐自然館+西郷港"},
-{id:"goka",isl:"dogo",cat:"観光",icon:"🏠",name:"五箇創生館",desc:"牛突き展示・大画面シアター・カフェ(隠岐そば)。",time:"60分",cost:"大人500円/子供200円",road:"ok",from:"西郷港から車25分",tel:"",tags:["屋内","雨天OK","子供向き"],web:"https://www.e-oki.net/spots/6015/",book:"",img:"",map:"五箇創生館+隠岐の島町"},
-{id:"ushitsuki",isl:"dogo",cat:"観光",icon:"🐂",name:"牛突き大会(5/4)",desc:"しゃくなげ祭り。年数回の貴重な伝統行事!",time:"2時間",cost:"要確認",road:"ok",from:"姿沢牛突き場(港から車30分)",tel:"08512-5-2211",tags:["イベント","5/4限定"],web:"https://www.e-oki.net/experience/7578/",book:"https://www.e-oki.net/experience/6615/",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Oki_Togyu1.jpg/640px-Oki_Togyu1.jpg",map:"隠岐モーモードーム+隠岐の島町"},
+{id:"nature",kids:1,isl:"dogo",cat:"観光",icon:"🦎",name:"隠岐自然館",desc:"西郷港2F。オキサンショウウオの生体展示。ジオパーク解説。",time:"60-90分",cost:"大人500円/子供250円",road:"ok",from:"西郷港ビル2F",tel:"",tags:["屋内","雨天OK","子供向き"],web:"https://www.oki-geopark.jp/museum/nature/",book:"",img:"",map:"隠岐自然館+西郷港"},
+{id:"goka",kids:1,isl:"dogo",cat:"観光",icon:"🏠",name:"五箇創生館",desc:"牛突き展示・大画面シアター・カフェ(隠岐そば)。",time:"60分",cost:"大人500円/子供200円",road:"ok",from:"西郷港から車25分",tel:"",tags:["屋内","雨天OK","子供向き"],web:"https://www.e-oki.net/spots/6015/",book:"",img:"",map:"五箇創生館+隠岐の島町"},
+{id:"ushitsuki",kids:1,isl:"dogo",cat:"観光",icon:"🐂",name:"牛突き大会(5/4)",desc:"しゃくなげ祭り。年数回の貴重な伝統行事!",time:"2時間",cost:"要確認",road:"ok",from:"姿沢牛突き場(港から車30分)",tel:"08512-5-2211",tags:["イベント","5/4限定"],web:"https://www.e-oki.net/experience/7578/",book:"https://www.e-oki.net/experience/6615/",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Oki_Togyu1.jpg/640px-Oki_Togyu1.jpg",map:"隠岐モーモードーム+隠岐の島町"},
 {id:"sasaki",isl:"dogo",cat:"観光",icon:"🏡",name:"佐々木家住宅",desc:"国指定重要文化財(1836年築)。伝統的な隠岐の民家。",time:"30分",cost:"要確認",road:"ok",from:"",tel:"",tags:["歴史","屋内"],web:"https://www.kankou-shimane.com/destination/20319",book:"",img:"",map:"佐々木家住宅+隠岐の島町"},
 
-{id:"rosoku",isl:"dogo",cat:"絶景",icon:"🕯",name:"ローソク島遊覧船",desc:"夕日がローソク岩の先端に灯る絶景。隠岐No.1の景色。",time:"約50分(船)",cost:"大人4,000円/子供2,000円",road:"warn",from:"福浦港(西郷港から車35分)",tel:"08512-2-0787",tags:["夕方限定","要予約","天候次第"],web:"https://www.e-oki.net/spots/6079/",book:"https://www.e-oki.net/experience/6602/",img:"",map:"ローソク島+隠岐の島町"},
+{id:"rosoku",kids:1,isl:"dogo",cat:"絶景",icon:"🕯",name:"ローソク島遊覧船",desc:"夕日がローソク岩の先端に灯る絶景。隠岐No.1の景色。",time:"約50分(船)",cost:"大人4,000円/子供2,000円",road:"warn",from:"福浦港(西郷港から車35分)",tel:"08512-2-0787",tags:["夕方限定","要予約","天候次第"],web:"https://www.e-oki.net/spots/6079/",book:"https://www.e-oki.net/experience/6602/",img:"",map:"ローソク島+隠岐の島町"},
 {id:"shira",isl:"dogo",cat:"絶景",icon:"🧊",name:"白島海岸",desc:"島後最北端。高さ50-220mの白い断崖が4km続く国指定天然記念物。",time:"30-60分",cost:"無料",road:"warn",from:"西郷港から車40分",tel:"",tags:["自然","展望台"],web:"https://www.e-oki.net/spots/6082/",book:"",img:"",map:"白島展望台+隠岐の島町"},
 {id:"dangyo",isl:"dogo",cat:"絶景",icon:"💧",name:"壇鏡の滝",desc:"日本の滝百選。裏から見られる珍しい滝。壇鏡神社も必見。",time:"60分",cost:"無料",road:"warn",from:"西郷港から車50分(最終区間狭い)",tel:"",tags:["自然","滝"],web:"https://www.e-oki.net/spots/6064/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Dangyo_falls1.JPG/640px-Dangyo_falls1.JPG",map:"壇鏡の滝+隠岐の島町"},
 {id:"chichi",isl:"dogo",cat:"絶景",icon:"🌳",name:"乳房杉",desc:"樹齢800年。24本の気根が垂れ下がる神秘の杉。",time:"90分(タクシー含む)",cost:"タクシー往復約8,000円",road:"ng",from:"キャンピングカーNG! タクシー必須",tel:"08512-2-0013",tags:["自然","巨木"],web:"https://www.kankou-shimane.com/destination/20305",book:"",img:"",map:"乳房杉+隠岐の島町"},
-{id:"kabura",isl:"dogo",cat:"絶景",icon:"🌲",name:"かぶら杉",desc:"樹齢600年。県道沿いで手軽に見学できる巨木。",time:"15分",cost:"無料",road:"ok",from:"西郷港から車20分",tel:"",tags:["自然","手軽"],web:"https://www.e-oki.net/spots/6080/",book:"",img:"",map:"かぶら杉+隠岐の島町"},
-{id:"jodo",isl:"dogo",cat:"絶景",icon:"🏝",name:"浄土ヶ浦海岸",desc:"松と奇岩の美しい海岸。遊歩道あり。広い駐車場・トイレ完備。",time:"60-90分",cost:"無料",road:"ok",from:"西郷港から車20分",tel:"",tags:["散策","子供向き"],web:"https://www.e-oki.net/spots/6075/",book:"",img:"",map:"浄土ヶ浦+隠岐の島町"},
+{id:"kabura",kids:1,isl:"dogo",cat:"絶景",icon:"🌲",name:"かぶら杉",desc:"樹齢600年。県道沿いで手軽に見学できる巨木。",time:"15分",cost:"無料",road:"ok",from:"西郷港から車20分",tel:"",tags:["自然","手軽"],web:"https://www.e-oki.net/spots/6080/",book:"",img:"",map:"かぶら杉+隠岐の島町"},
+{id:"jodo",kids:1,isl:"dogo",cat:"絶景",icon:"🏝",name:"浄土ヶ浦海岸",desc:"松と奇岩の美しい海岸。遊歩道あり。広い駐車場・トイレ完備。",time:"60-90分",cost:"無料",road:"ok",from:"西郷港から車20分",tel:"",tags:["散策","子供向き"],web:"https://www.e-oki.net/spots/6075/",book:"",img:"",map:"浄土ヶ浦+隠岐の島町"},
 {id:"tokage",isl:"dogo",cat:"絶景",icon:"🦎",name:"トカゲ岩",desc:"崖を登るトカゲの形をした26mの奇岩。日本三大奇岩の一つ。",time:"30分",cost:"無料",road:"warn",from:"西郷港から車30分",tel:"",tags:["自然","写真映え"],web:"https://www.e-oki.net/spots/6022/",book:"",img:"",map:"トカゲ岩+隠岐の島町"},
 {id:"naku",isl:"dogo",cat:"絶景",icon:"🌅",name:"那久岬",desc:"西海岸の岬。鎧岩・カブト岩の伝説と夕日の名所。",time:"30分",cost:"無料",road:"warn",from:"西郷港から車40分",tel:"",tags:["夕日","伝説"],web:"",book:"",img:"",map:"那久岬+隠岐の島町"},
 
-{id:"naka-beach",isl:"dogo",cat:"海遊び",icon:"🏖",name:"中村海水浴場",desc:"ビーチ隣接キャンプ場。浅瀬で子供も安心。",time:"自由",cost:"無料",road:"ok",from:"西郷港から車25分",tel:"",tags:["ビーチ","子供向き","無料"],web:"https://www.e-oki.net/spots/6029/",book:"",img:"",map:"中村海水浴場+隠岐の島町"},
-{id:"shiohama",isl:"dogo",cat:"海遊び",icon:"🏊",name:"塩浜海水浴場",desc:"西郷港から最も近いビーチ。透明度高い。",time:"自由",cost:"無料",road:"ok",from:"西郷港から車5分",tel:"",tags:["ビーチ","近い"],web:"",book:"",img:"",map:"塩浜海水浴場+隠岐の島町"},
+{id:"naka-beach",kids:1,kids:1,isl:"dogo",cat:"海遊び",icon:"🏖",name:"中村海水浴場",desc:"ビーチ隣接キャンプ場。浅瀬で子供も安心。",time:"自由",cost:"無料",road:"ok",from:"西郷港から車25分",tel:"",tags:["ビーチ","子供向き","無料"],web:"https://www.e-oki.net/spots/6029/",book:"",img:"",map:"中村海水浴場+隠岐の島町"},
+{id:"shiohama",kids:1,isl:"dogo",cat:"海遊び",icon:"🏊",name:"塩浜海水浴場",desc:"西郷港から最も近いビーチ。透明度高い。",time:"自由",cost:"無料",road:"ok",from:"西郷港から車5分",tel:"",tags:["ビーチ","近い"],web:"",book:"",img:"",map:"塩浜海水浴場+隠岐の島町"},
 {id:"marine",isl:"dogo",cat:"海遊び",icon:"🛶",name:"海洋スポーツセンター",desc:"カヤック・SUP体験。遠浅100mで安全。",time:"2時間",cost:"カヤック7,000円〜",road:"ok",from:"西郷港から車20分",tel:"08512-6-2050",tags:["アクティビティ","要予約"],web:"https://www.e-oki.net/spots/6057/",book:"",img:"",map:"隠岐の島海洋スポーツセンター"},
 
-{id:"fish-guide",isl:"dogo",cat:"釣り",icon:"🎣",name:"西郷港岸壁釣り(ガイド付)",desc:"竿・餌込み90分。スタッフが餌付け&魚外し。初心者・子供OK。",time:"90分(8:40/12:30/15:30)",cost:"3,000円(ガイド)/2,000円(レンタル)",road:"ok",from:"西郷港ポートプラザ1F前",tel:"08512-2-7100",tags:["要予約","子供向き","手ぶらOK"],web:"https://www.e-oki.net/experience/6316/",book:"https://www.e-oki.net/experience/6316/",img:"",map:"西郷港+隠岐の島町"},
+{id:"fish-guide",kids:1,isl:"dogo",cat:"釣り",icon:"🎣",name:"西郷港岸壁釣り(ガイド付)",desc:"竿・餌込み90分。スタッフが餌付け&魚外し。初心者・子供OK。",time:"90分(8:40/12:30/15:30)",cost:"3,000円(ガイド)/2,000円(レンタル)",road:"ok",from:"西郷港ポートプラザ1F前",tel:"08512-2-7100",tags:["要予約","子供向き","手ぶらOK"],web:"https://www.e-oki.net/experience/6316/",book:"https://www.e-oki.net/experience/6316/",img:"",map:"西郷港+隠岐の島町"},
 {id:"fish-tsuma",isl:"dogo",cat:"釣り",icon:"🐟",name:"都万港(自由釣り)",desc:"広い港。アジ・キス・チヌが狙える。",time:"自由",cost:"無料",road:"ok",from:"西郷港から車20分",tel:"",tags:["無料","自由"],web:"",book:"",img:"",map:"都万港+隠岐の島町"},
 
-{id:"fw",isl:"dogo",cat:"食事",icon:"🦀",name:"フィッシャーマンズ・ワーフ隠岐",desc:"海鮮丼・岩ガキ・隠岐牛。港直結で子連れ最適。",time:"昼11:00-14:00/夜18:00-21:00",cost:"1,500-3,000円",road:"ok",from:"西郷港直結",tel:"",tags:["海鮮","隠岐牛","水曜定休"],web:"https://www.e-oki.net/spots/11545/",book:"",img:"",map:"フィッシャーマンズワーフ隠岐"},
-{id:"plaza",isl:"dogo",cat:"食事",icon:"🧁",name:"隠岐プラザホテル 緋翠",desc:"岩ガキ1,265円/個。隠岐牛7,590円。お子様セット3,850円。",time:"ランチ・ディナー",cost:"3,000-10,000円",road:"ok",from:"西郷港近く",tel:"08512-2-0111",tags:["岩ガキ","隠岐牛","要予約"],web:"https://okiplaza.com/",book:"https://okiplaza.com/",img:"",map:"隠岐プラザホテル"},
+{id:"fw",kids:1,isl:"dogo",cat:"食事",icon:"🦀",name:"フィッシャーマンズ・ワーフ隠岐",desc:"海鮮丼・岩ガキ・隠岐牛。港直結で子連れ最適。",time:"昼11:00-14:00/夜18:00-21:00",cost:"1,500-3,000円",road:"ok",from:"西郷港直結",tel:"",tags:["海鮮","隠岐牛","水曜定休"],web:"https://www.e-oki.net/spots/11545/",book:"",img:"",map:"フィッシャーマンズワーフ隠岐"},
+{id:"plaza",kids:1,isl:"dogo",cat:"食事",icon:"🧁",name:"隠岐プラザホテル 緋翠",desc:"岩ガキ1,265円/個。隠岐牛7,590円。お子様セット3,850円。",time:"ランチ・ディナー",cost:"3,000-10,000円",road:"ok",from:"西郷港近く",tel:"08512-2-0111",tags:["岩ガキ","隠岐牛","要予約"],web:"https://okiplaza.com/",book:"https://okiplaza.com/",img:"",map:"隠岐プラザホテル"},
 {id:"suehiro",isl:"dogo",cat:"食事",icon:"🥩",name:"和風ダイニング 末広",desc:"隠岐牛ステーキコース。本格ディナー。",time:"17:00-21:00",cost:"5,000-10,000円",road:"ok",from:"西郷エリア",tel:"",tags:["隠岐牛","要予約"],web:"",book:"",img:"",map:"末広+隠岐の島町+西郷"},
 {id:"nagi",isl:"dogo",cat:"食事",icon:"🍱",name:"Restaurant なぎ",desc:"凪ランチ2,000円(1日10食限定)。ローストビーフ丼1,600円。",time:"11:30-14:00(木曜定休)",cost:"1,600-2,000円",road:"ok",from:"西郷港から車20分",tel:"08512-3-1886",tags:["限定","要予約"],web:"",book:"",img:"",map:"レストランなぎ+隠岐の島町"},
-{id:"bench",isl:"dogo",cat:"食事",icon:"🍩",name:"Bakehouse BENCH",desc:"アメリカンドーナツ&ハンバーガー。子供が喜ぶ。",time:"11:00-18:00(日月定休)",cost:"500-1,500円",road:"ok",from:"西郷エリア",tel:"",tags:["カジュアル","子供向き"],web:"",book:"",img:"",map:"Bakehouse+BENCH+隠岐"},
+{id:"bench",kids:1,isl:"dogo",cat:"食事",icon:"🍩",name:"Bakehouse BENCH",desc:"アメリカンドーナツ&ハンバーガー。子供が喜ぶ。",time:"11:00-18:00(日月定休)",cost:"500-1,500円",road:"ok",from:"西郷エリア",tel:"",tags:["カジュアル","子供向き"],web:"",book:"",img:"",map:"Bakehouse+BENCH+隠岐"},
 
 {id:"anki",isl:"dogo",cat:"買い物",icon:"🏪",name:"あんき市場",desc:"隠岐産100%の直売所。地野菜・鮮魚・あらめ海苔。",time:"8:00-18:00",cost:"-",road:"ok",from:"西郷港から徒歩2分",tel:"08512-2-8633",tags:["地元産","食材"],web:"",book:"",img:"",map:"あんき市場+隠岐の島町"},
 {id:"himari",isl:"dogo",cat:"買い物",icon:"🛒",name:"ひまりスーパー隠岐店",desc:"島内最大のスーパー。惣菜・弁当・鮮魚。",time:"~21:00",cost:"-",road:"ok",from:"西郷エリア",tel:"",tags:["食材","日用品"],web:"",book:"",img:"",map:"ひまり+隠岐の島町"},
 {id:"omiyage",isl:"dogo",cat:"買い物",icon:"🎁",name:"港プラザお土産コーナー",desc:"藻塩・さざえカレー・島のり・地酒。",time:"フェリー営業時間",cost:"-",road:"ok",from:"西郷港ビル内",tel:"",tags:["お土産"],web:"",book:"",img:"",map:"西郷港+隠岐の島町"},
 
-{id:"onsen-goka",isl:"dogo",cat:"温泉・宿泊",icon:"♨",name:"隠岐温泉GOKA",desc:"島後唯一の温泉。美肌の湯。水着ゾーンあり。",time:"14:00-20:00(月曜定休)",cost:"大人500円/子供250円",road:"ok",from:"西郷港から車25分",tel:"",tags:["温泉","子供OK"],web:"https://www.e-oki.net/spots/15690/",book:"",img:"",map:"隠岐温泉GOKA"},
-{id:"geo",isl:"dogo",cat:"温泉・宿泊",icon:"⛺",name:"ジオリゾートシンフォニー",desc:"電源付オートサイト。ピザ窯あり。",time:"",cost:"3,000円/泊(4名)",road:"ok",from:"西郷港から車25-35分",tel:"08512-7-4009",tags:["電源あり","要予約"],web:"https://www.e-oki.net/accommodation/6301/",book:"https://www.nap-camp.com/shimane/12371",img:"",map:"ジオリゾートシンフォニー+隠岐"},
-{id:"marine-camp",isl:"dogo",cat:"温泉・宿泊",icon:"🏕",name:"海洋スポーツセンター(キャンプ)",desc:"500円/人。BBQセット1,000円。",time:"",cost:"500円/人",road:"ok",from:"西郷港から車20分",tel:"08512-6-2050",tags:["格安"],web:"https://www.e-oki.net/spots/6057/",book:"",img:"",map:"隠岐の島海洋スポーツセンター"},
+{id:"onsen-goka",kids:1,isl:"dogo",cat:"温泉・宿泊",icon:"♨",name:"隠岐温泉GOKA",desc:"島後唯一の温泉。美肌の湯。水着ゾーンあり。",time:"14:00-20:00(月曜定休)",cost:"大人500円/子供250円",road:"ok",from:"西郷港から車25分",tel:"",tags:["温泉","子供OK"],web:"https://www.e-oki.net/spots/15690/",book:"",img:"",map:"隠岐温泉GOKA"},
+{id:"geo",kids:1,isl:"dogo",cat:"⛺キャンプ&RV",icon:"⛺",name:"ジオリゾートシンフォニー",desc:"電源付オートサイト。ピザ窯あり。",time:"",cost:"3,000円/泊(4名)",road:"ok",from:"西郷港から車25-35分",tel:"08512-7-4009",tags:["電源あり","要予約"],web:"https://www.e-oki.net/accommodation/6301/",book:"https://www.nap-camp.com/shimane/12371",img:"",map:"ジオリゾートシンフォニー+隠岐"},
+{id:"marine-camp",kids:1,isl:"dogo",cat:"⛺キャンプ&RV",icon:"🏕",name:"海洋スポーツセンター(キャンプ)",desc:"500円/人。BBQセット1,000円。",time:"",cost:"500円/人",road:"ok",from:"西郷港から車20分",tel:"08512-6-2050",tags:["格安"],web:"https://www.e-oki.net/spots/6057/",book:"",img:"",map:"隠岐の島海洋スポーツセンター"},
 
 {id:"hospital",isl:"dogo",cat:"医療",icon:"🏥",name:"隠岐病院",desc:"島内唯一の総合病院。小児科あり。24時間救急。",time:"外来 平日8:00-11:00",cost:"保険適用",road:"ok",from:"西郷エリア(城北町355)",tel:"08512-2-1356",tags:["小児科","救急","24時間"],web:"https://www.oki-hospital.com/",book:"https://ssc11.doctorqube.com/oki-hospital/",img:"",map:"隠岐病院"},
 
@@ -275,10 +275,10 @@ const S=[
 {id:"okijinja",isl:"naka",cat:"観光",icon:"⛩",name:"隠岐神社",desc:"後鳥羽上皇を祀る。700年記念に建立。桜の名所でもある。",time:"30分",cost:"無料",road:"ok",from:"菱浦港から車10分",tel:"",tags:["歴史","後鳥羽上皇"],web:"https://www.kankou-shimane.com/destination/20457",book:"",img:"",map:"隠岐神社+海士町"},
 {id:"gotoba",isl:"naka",cat:"観光",icon:"👑",name:"後鳥羽上皇行在所跡・御火葬塚",desc:"承久の乱で流された後鳥羽上皇が19年間過ごした地。",time:"20分",cost:"無料",road:"ok",from:"菱浦港から車10分",tel:"",tags:["歴史","史跡"],web:"",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/%E6%B5%B7%E5%A3%AB%E7%94%BA%E5%BE%8C%E9%B3%A5%E7%BE%BD%E5%A4%A9%E7%9A%87%E5%BE%A1%E7%81%AB%E8%91%AC%E5%A1%9A.jpg/640px-%E6%B5%B7%E5%A3%AB%E7%94%BA%E5%BE%8C%E9%B3%A5%E7%BE%BD%E5%A4%A9%E7%9A%87%E5%BE%A1%E7%81%AB%E8%91%AC%E5%A1%9A.jpg",map:"後鳥羽上皇御火葬塚+海士町"},
 
-{id:"akiya",isl:"naka",cat:"絶景",icon:"💙",name:"明屋海岸(ハート岩)",desc:"屏風岩にハート型の穴。マリンブルーの海が美しい。",time:"30-60分",cost:"無料",road:"ok",from:"菱浦港から車20分",tel:"",tags:["写真映え","ビーチ","子供向き"],web:"https://www.e-oki.net/spots/6066/",book:"",img:"",map:"明屋海岸+海士町"},
+{id:"akiya",kids:1,isl:"naka",cat:"絶景",icon:"💙",name:"明屋海岸(ハート岩)",desc:"屏風岩にハート型の穴。マリンブルーの海が美しい。",time:"30-60分",cost:"無料",road:"ok",from:"菱浦港から車20分",tel:"",tags:["写真映え","ビーチ","子供向き"],web:"https://www.e-oki.net/spots/6066/",book:"",img:"",map:"明屋海岸+海士町"},
 {id:"konkoji",isl:"naka",cat:"絶景",icon:"🏔",name:"金光寺山展望台",desc:"標高164m。島前三島と島後を一望する360度パノラマ。",time:"30分",cost:"無料",road:"warn",from:"菱浦港から車15分(急坂)",tel:"",tags:["展望","パノラマ"],web:"",book:"",img:"",map:"金光寺山+海士町"},
 
-{id:"amanbow",isl:"naka",cat:"海遊び",icon:"🚢",name:"海中展望船あまんぼう",desc:"半潜水型の船で海中を覗く。濡れずに海の世界を体験。",time:"50分",cost:"大人2,000円/子供1,000円",road:"ok",from:"菱浦港から乗船",tel:"08514-2-0101",tags:["子供向き","雨天時も可"],web:"https://www.e-oki.net/experience/6608/",book:"https://www.e-oki.net/experience/6608/",img:"",map:"菱浦港+海士町"},
+{id:"amanbow",kids:1,isl:"naka",cat:"海遊び",icon:"🚢",name:"海中展望船あまんぼう",desc:"半潜水型の船で海中を覗く。濡れずに海の世界を体験。",time:"50分",cost:"大人2,000円/子供1,000円",road:"ok",from:"菱浦港から乗船",tel:"08514-2-0101",tags:["子供向き","雨天時も可"],web:"https://www.e-oki.net/experience/6608/",book:"https://www.e-oki.net/experience/6608/",img:"",map:"菱浦港+海士町"},
 
 {id:"ama-fish",isl:"naka",cat:"釣り",icon:"🎣",name:"海士町の釣り(遊漁船)",desc:"対馬暖流の豊かな漁場。チャーター船あり。",time:"半日〜",cost:"要確認",road:"ok",from:"菱浦港周辺",tel:"08514-2-0101",tags:["要予約","本格派"],web:"",book:"",img:"",map:"菱浦港+海士町"},
 
@@ -289,7 +289,7 @@ const S=[
 {id:"shimaja",isl:"naka",cat:"買い物",icon:"🏪",name:"島じゃ常識商店",desc:"菱浦港1F。ホタテカレー・イカカレー・海塩・陶器。",time:"7:30-19:00",cost:"-",road:"ok",from:"菱浦港ビル1F",tel:"",tags:["お土産","港直結"],web:"",book:"",img:"",map:"キンニャモニャセンター+海士町"},
 {id:"tsunakake",isl:"naka",cat:"買い物",icon:"🍞",name:"つなかけ",desc:"隠岐神社前。銘菓「白波」と手作りパン。",time:"9:00-17:00",cost:"-",road:"ok",from:"隠岐神社前",tel:"08514-2-0717",tags:["銘菓","パン"],web:"",book:"",img:"",map:"つなかけ+海士町"},
 
-{id:"akiya-camp",isl:"naka",cat:"温泉・宿泊",icon:"⛺",name:"明屋キャンプ場",desc:"明屋海岸に隣接。水・トイレ・炊事場あり。無料!",time:"",cost:"無料",road:"ok",from:"菱浦港から車20分",tel:"08514-2-0101",tags:["無料","ビーチ隣接"],web:"",book:"",img:"",map:"明屋海岸+海士町"},
+{id:"akiya-camp",kids:1,isl:"naka",cat:"⛺キャンプ&RV",icon:"⛺",name:"明屋キャンプ場",desc:"明屋海岸に隣接。水・トイレ・炊事場あり。無料!",time:"",cost:"無料",road:"ok",from:"菱浦港から車20分",tel:"08514-2-0101",tags:["無料","ビーチ隣接"],web:"",book:"",img:"",map:"明屋海岸+海士町"},
 
 {id:"ama-clinic",isl:"naka",cat:"医療",icon:"🏥",name:"海士診療所",desc:"島内唯一の診療所。緊急時は要電話。",time:"要確認",cost:"保険適用",road:"ok",from:"菱浦エリア",tel:"08514-2-0101",tags:["診療所","要電話"],web:"",book:"",img:"",map:"海士診療所+海士町"},
 
@@ -297,10 +297,10 @@ const S=[
 {id:"yura",isl:"nishi",cat:"観光",icon:"⛩",name:"由良比女神社",desc:"隠岐国一宮。イカが神前に集まる伝説の社。",time:"20分",cost:"無料",road:"ok",from:"別府港から車15分",tel:"",tags:["歴史","一宮","伝説"],web:"https://www.e-oki.net/spots/6072/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Yurahime_jinja_Haiden.JPEG/640px-Yurahime_jinja_Haiden.JPEG",map:"由良比女神社+西ノ島町"},
 {id:"takuhi",isl:"nishi",cat:"観光",icon:"⛩",name:"焼火神社",desc:"崖の洞窟に建つ社殿。本殿は国指定重要文化財(1732年)。",time:"90分(登山30分)",cost:"無料",road:"warn",from:"別府港から車15分+徒歩30分",tel:"",tags:["登山","歴史","健脚向き"],web:"https://www.e-oki.net/spots/6069/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Takuhi_jinja_Honden.JPG/640px-Takuhi_jinja_Honden.JPG",map:"焼火神社+西ノ島町"},
 
-{id:"kuniga",isl:"nishi",cat:"絶景",icon:"🏔",name:"国賀海岸",desc:"13kmの大断崖。摩天崖(257m)は日本一の海食崖。通天橋も。",time:"60-120分",cost:"無料",road:"ok",from:"別府港から車20分",tel:"",tags:["日本一","絶景","馬・牛放牧"],web:"https://www.e-oki.net/spots/6078/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Matengai_of_Kuniga_Coast_in_Oki_Island_Shimane_pref600.jpg/640px-Matengai_of_Kuniga_Coast_in_Oki_Island_Shimane_pref600.jpg",map:"国賀海岸+西ノ島町"},
+{id:"kuniga",kids:1,isl:"nishi",cat:"絶景",icon:"🏔",name:"国賀海岸",desc:"13kmの大断崖。摩天崖(257m)は日本一の海食崖。通天橋も。",time:"60-120分",cost:"無料",road:"ok",from:"別府港から車20分",tel:"",tags:["日本一","絶景","馬・牛放牧"],web:"https://www.e-oki.net/spots/6078/",book:"",img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Matengai_of_Kuniga_Coast_in_Oki_Island_Shimane_pref600.jpg/640px-Matengai_of_Kuniga_Coast_in_Oki_Island_Shimane_pref600.jpg",map:"国賀海岸+西ノ島町"},
 {id:"maten",isl:"nishi",cat:"絶景",icon:"🏞",name:"摩天崖ハイキング",desc:"崖上の草原を歩く2.8km。馬と牛が放牧される別世界。",time:"約70分(片道・下り)",cost:"無料",road:"ok",from:"国賀海岸エリア",tel:"",tags:["ハイキング","絶景","片道"],web:"https://www.e-oki.net/spots/6078/",book:"",img:"",map:"摩天崖+西ノ島町"},
 
-{id:"kuniga-boat",isl:"nishi",cat:"海遊び",icon:"🚢",name:"国賀めぐり定期観光船",desc:"海上から国賀海岸の絶壁を90分で巡る。迫力満点。",time:"90分(10:50/13:00/15:00発)",cost:"大人4,000円/子供2,000円",road:"ok",from:"浦郷港(別府港から車10分)",tel:"08514-7-8412",tags:["要予約","天候次第","子供OK"],web:"https://www.e-oki.net/experience/6604/",book:"https://www.e-oki.net/experience/6604/",img:"",map:"浦郷港+西ノ島町"},
+{id:"kuniga-boat",kids:1,isl:"nishi",cat:"海遊び",icon:"🚢",name:"国賀めぐり定期観光船",desc:"海上から国賀海岸の絶壁を90分で巡る。迫力満点。",time:"90分(10:50/13:00/15:00発)",cost:"大人4,000円/子供2,000円",road:"ok",from:"浦郷港(別府港から車10分)",tel:"08514-7-8412",tags:["要予約","天候次第","子供OK"],web:"https://www.e-oki.net/experience/6604/",book:"https://www.e-oki.net/experience/6604/",img:"",map:"浦郷港+西ノ島町"},
 {id:"kuniga-bus",isl:"nishi",cat:"海遊び",icon:"🚌",name:"国賀めぐり定期観光バス",desc:"摩天崖〜国賀浜をバスで巡る。ハイキング区間あり。",time:"105分(13:00/15:00発)",cost:"大人4,000円/子供2,000円",road:"ok",from:"浦郷港発",tel:"08514-7-8412",tags:["バスツアー","手軽"],web:"https://www.e-oki.net/experience/6604/",book:"https://www.e-oki.net/experience/6604/",img:"",map:"浦郷港+西ノ島町"},
 
 {id:"nishi-fish",isl:"nishi",cat:"釣り",icon:"🎣",name:"西ノ島の磯釣り",desc:"国賀海岸周辺の豊かな漁場。地元船のチャーター。",time:"半日〜",cost:"要確認",road:"ok",from:"浦郷港周辺",tel:"",tags:["上級者","チャーター"],web:"",book:"",img:"",map:"浦郷港+西ノ島町"},
@@ -310,7 +310,7 @@ const S=[
 
 {id:"ando",isl:"nishi",cat:"買い物",icon:"🍶",name:"安藤本店",desc:"老舗酒蔵。酒粕クラッカー・地酒・朝は焼きたてパン。",time:"9:00-18:00",cost:"-",road:"ok",from:"別府港から徒歩1分",tel:"08514-7-8848",tags:["地酒","お土産","パン"],web:"",book:"",img:"",map:"安藤本店+西ノ島町"},
 
-{id:"shimanebana",isl:"nishi",cat:"温泉・宿泊",icon:"⛺",name:"島根鼻公園オートキャンプ場",desc:"電源付6サイト。シャワー・トイレ完備。キャンピングカーOK。",time:"13:00-翌10:00",cost:"4,000円/泊",road:"ok",from:"別府港から車15分",tel:"08514-6-1385",tags:["電源あり","要予約","3日前まで"],web:"https://www.e-oki.net/spots/14985/",book:"https://www.nap-camp.com/shimane/12378",img:"",map:"島根鼻公園+西ノ島町"},
+{id:"shimanebana",kids:1,isl:"nishi",cat:"⛺キャンプ&RV",icon:"⛺",name:"島根鼻公園オートキャンプ場",desc:"電源付6サイト。シャワー・トイレ完備。キャンピングカーOK。",time:"13:00-翌10:00",cost:"4,000円/泊",road:"ok",from:"別府港から車15分",tel:"08514-6-1385",tags:["電源あり","要予約","3日前まで"],web:"https://www.e-oki.net/spots/14985/",book:"https://www.nap-camp.com/shimane/12378",img:"",map:"島根鼻公園+西ノ島町"},
 
 {id:"dozen-hosp",isl:"nishi",cat:"医療",icon:"🏥",name:"隠岐島前病院",desc:"島前三島の中核病院。小児科あり。44床。",time:"受付 9:00-17:00",cost:"保険適用",road:"ok",from:"別府港近く",tel:"08514-7-8211",tags:["小児科","救急"],web:"",book:"",img:"",map:"隠岐島前病院+西ノ島町"},
 
@@ -324,6 +324,13 @@ const S=[
 {id:"chibu-shop",isl:"chibu",cat:"買い物",icon:"🎁",name:"来居港ターミナル売店",desc:"レモンケーキ・シーグラスアクセサリー等。",time:"8:30-17:30",cost:"-",road:"ok",from:"来居港内",tel:"08514-8-2272",tags:["お土産","手作り"],web:"",book:"",img:"",map:"来居港+知夫村"},
 
 {id:"chibu-clinic",isl:"chibu",cat:"医療",icon:"🏥",name:"知夫診療所",desc:"小規模診療所。重症時は島前病院or隠岐病院へヘリ搬送。",time:"要確認",cost:"保険適用",road:"ok",from:"来居エリア",tel:"",tags:["診療所","限定的"],web:"",book:"",img:"",map:"知夫診療所+知夫村"},
+
+// ===== 追加: キャンプ場&RVパーク =====
+{id:"nakamura-camp",kids:1,isl:"dogo",cat:"⛺キャンプ&RV",icon:"⛺",name:"中村キャンプ場",desc:"ビーチ隣接。レストラン併設。家族連れに人気。",time:"",cost:"大人1,000円/子供500円",road:"ok",from:"西郷港から車25分",tel:"08512-4-0611",tags:["ビーチ隣接","レストラン"],web:"https://www.e-oki.net/spots/6029/",book:"",img:"",map:"中村キャンプ場+隠岐の島町"},
+{id:"tatsugi-camp",isl:"dogo",cat:"⛺キャンプ&RV",icon:"⛺",name:"立木キャンプ場",desc:"海沿いのキャンプ場。ビーチ徒歩5分。格安。",time:"",cost:"300円/人",road:"ok",from:"西郷港から車15分",tel:"08512-2-3848",tags:["海沿い","格安"],web:"",book:"",img:"",map:"立木キャンプ場+隠岐の島町"},
+{id:"mimoza-camp",isl:"dogo",cat:"⛺キャンプ&RV",icon:"⛺",name:"ミモザキャンプ場",desc:"浄土ヶ浦近く。シャワーあり。静かな環境。",time:"",cost:"1,100-1,650円/泊",road:"ok",from:"西郷港から車40分(浄土ヶ浦近く)",tel:"08512-7-4311",tags:["海沿い","シャワー"],web:"",book:"",img:"",map:"ミモザキャンプ場+隠岐の島町"},
+{id:"rv-saigo",isl:"dogo",cat:"⛺キャンプ&RV",icon:"🚐",name:"西郷港駐車場(車中泊)",desc:"約600台の無料駐車場。フェリー前泊・最終泊に最適。トイレあり。",time:"",cost:"無料",road:"ok",from:"西郷港",tel:"",tags:["無料","車中泊","トイレあり"],web:"",book:"",img:"",map:"西郷港+隠岐の島町"},
+{id:"mimiura-camp",isl:"nishi",cat:"⛺キャンプ&RV",icon:"⛺",name:"耳浦キャンプ場",desc:"東国賀海岸の砂利浜。7月中旬〜8月中旬限定。",time:"7月中旬〜8月中旬",cost:"1,000円/サイト",road:"ok",from:"別府港から車15分",tel:"08514-7-8888",tags:["期間限定","海沿い"],web:"",book:"",img:"",map:"耳浦キャンプ場+西ノ島町"},
 ];
 
 const DAYS=[
@@ -368,14 +375,20 @@ function selIsland(id){cIsland=id;cCat="すべて";rIslands();rCats();rSpots()}
 
 function rCats(){
   const spots=S.filter(s=>s.isl===cIsland);
-  const cats=["すべて",...[...new Set(spots.map(s=>s.cat))]];
+  const realCats=[...new Set(spots.map(s=>s.cat))];
+  const hasKids=spots.some(s=>s.kids);
+  const hasCamp=realCats.includes("⛺キャンプ&RV");
+  let cats=["すべて"];
+  if(hasKids) cats.push("👶子連れ");
+  realCats.forEach(c=>{if(!cats.includes(c)) cats.push(c)});
   $('catFilter').innerHTML=cats.map(c=>`<button class="cbtn${c===cCat?' on':''}" onclick="selCat('${c}')">${c}</button>`).join('');
 }
 function selCat(c){cCat=c;rCats();rSpots()}
 
 function rSpots(){
   let list=S.filter(s=>s.isl===cIsland);
-  if(cCat!=="すべて")list=list.filter(s=>s.cat===cCat);
+  if(cCat==="👶子連れ") list=list.filter(s=>s.kids);
+  else if(cCat!=="すべて") list=list.filter(s=>s.cat===cCat);
   if(cCat==="すべて"){
     const groups={};list.forEach(s=>{(groups[s.cat]=groups[s.cat]||[]).push(s)});
     let html='';
@@ -395,7 +408,7 @@ function spotHTML(s){
     <div class="spot-body">
     <div class="sname">${s.icon} ${s.name}${inp?' <span style="font-size:11px;color:var(--star)">✓ 追加済</span>':''}</div>
     <div class="sdesc">${s.desc}</div>
-    <div class="stags"><span class="tag t-${s.isl}">${ISLANDS.find(i=>i.id===s.isl).sub}</span><span class="tag ${rc}">車${rl}</span>${s.tags.map(t=>`<span class="tag t-feat">${t}</span>`).join('')}</div>
+    <div class="stags"><span class="tag t-${s.isl}">${ISLANDS.find(i=>i.id===s.isl).sub}</span><span class="tag ${rc}">車${rl}</span>${s.kids?'<span class="tag" style="background:#e8f5e9;color:#2e7d32">👶子連れOK</span>':''}${s.tags.map(t=>`<span class="tag t-feat">${t}</span>`).join('')}</div>
     </div>
 
 
